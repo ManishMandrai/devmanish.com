@@ -1,0 +1,17 @@
+@keyframes marquee {
+  from {
+    transform: translateX(0%);
+  }
+  to {
+    transform: translateX(100%);
+  }
+}
+
+.hover\:animate-marquee {
+  display: inline-block;
+  transition: transform 0.1s ease-out;
+}
+
+.hover\:animate-marquee:hover {
+  animation: marquee 1s linear infinite;
+}

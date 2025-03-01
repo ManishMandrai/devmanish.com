@@ -1,0 +1,14 @@
+[
+  {
+    "id": 1,
+    "company": "MY APP BROKER ",
+    "url": "https://www.myappbroker.com/",
+    "type": "Freelancer - Full Stack Developer",
+    "dates": "Jan - Fab 2025",
+    "description": "Developed the MyAppBroker website from scratch using React.js, Firebase, and Node.js, ensuring a seamless, scalable, and fully functional platform. Key contributions included architecting the system, implementing real-time features, and optimizing performance.",
+    "tags": ["React", "JavaScript", "Firebase", "Tailwind"],
+    "certificateLink": "#",
+    "testimonialLink": "#",
+    "image": "./myappbroker.png"
+  }
+]
