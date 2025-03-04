@@ -3,7 +3,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
-import Img from "../assets/erth.png";
+// import Img from "../assets/erth.png";
 
 const testimonials = [
   {
@@ -11,7 +11,7 @@ const testimonials = [
     name: "Sukoshal Jain",
     position: "Co-Founder",
     company: "My APP Broker",
-    image: Img,
+    image: "/erth.png", 
     testimonial:
       "Manish did an amazing job on our website! The design is sleek, the performance is fast, and everything works flawlessly. He was super responsive and made all the changes we requested quickly. Highly recommend for any web development needs!",
   },

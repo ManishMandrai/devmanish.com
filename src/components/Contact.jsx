@@ -94,28 +94,7 @@ const Contact = () => {
       </div>
 
       {/* Social Media Icons */}
-      <div>
-        <h4 className="text-center">Or You can also contact me at</h4>
-        <div className="flex justify-center gap-6 mt-6 text-2xl">
-          <a
-            target="_blank"
-            rel="noopener noreferrer"
-            className="cursor-pointer text-white hover:text-blue-700 transition-colors duration-300" // LinkedIn blue
-            href="https://www.linkedin.com/in/manish-kumar-mandrai/"
-          >
-            <CiLinkedin className="w-6.5 h-6.5 md:w-8 md:h-8" />{" "}
-            {/* Reduced size to 80% */}
-          </a>
-          <a
-            href="https://x.com/ManishKumar3114?t=FqKTO6rQ9LfDA2gsHWiwaQ&s=09"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:text-[#000000]" // Twitter (X) black
-          >
-            <FaXTwitter className="w-7 h-7" />
-          </a>
-        </div>
-      </div>
+
     </div>
   );
 };

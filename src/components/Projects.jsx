@@ -61,42 +61,89 @@ const Projects = () => {
         className="max-w-7xl mx-auto"
       >
         {projects.map((project, index) => (
-          <SwiperSlide key={index}>
-            <div className="flex flex-col md:flex-row lg:px-20 lg:py-20 px-8 py-12 items-center justify-between gap-8">
-              <div className="flex-1 flex flex-col gap-4 order-1 md:order-0">
-                <h3>{project.title}</h3>
-                <p className="text-gray-100 text-base text-left">
-                  {project.description}
-                </p>
-                <div className="flex flex-wrap gap-2 mt-4">
-                  {project.skills.map((skill, i) => (
-                    <span
-                      key={i}
-                      className="flex items-center justify-center border-1 rounded-lg px-5 py-2 space-x-2 hover:bg-[#000000] hover:scale-105 transition-colors"
-                    >
-                      {skill}
-                    </span>
-                  ))}
-                </div>
-              </div>
-              <div className="flex-1 order-0 md:order-1 relative w-full md:w-full h-80 md:h-80 lg:h-80">
-                <div className="relative w-full h-full rounded-xl overflow-hidden bg-black">
-                  <iframe
-                    src={`https://www.youtube.com/embed/${
-                      project.video.split("v=")[1]
-                    }?autoplay=1&mute=1&loop=1&playlist=${
-                      project.video.split("v=")[1]
-                    }`}
-                    className="w-full h-full"
-                    title={project.title}
-                    frameBorder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
-                  ></iframe>
-                </div>
+        <SwiperSlide key={index}>
+        <div className="flex flex-col md:flex-row lg:px-20 lg:py-20 px-4 py-12 items-center justify-between gap-8">
+          {/* Project Details */}
+          <div className="flex-1 flex flex-col gap-4 order-2 md:order-0">
+            <h3>{project.title}</h3>
+            <p className="text-gray-100 text-base text-left">
+              {project.description}
+            </p>
+            <div className="flex flex-wrap gap-2 mt-4">
+              {project.skills.map((skill, i) => (
+                <span
+                  key={i}
+                  className="flex items-center justify-center border-1 rounded-lg px-5 py-2 space-x-2 hover:bg-[#000000] hover:scale-105 transition-colors"
+                >
+                  {skill}
+                </span>
+              ))}
+            </div>
+          </div>
+
+          {/* Video Container with Hover Buttons */}
+          <div className="group flex-1 order-0 md:order-1 relative w-full md:w-full h-80 md:h-80 lg:h-80">
+            <div className="relative w-full h-full rounded-xl overflow-hidden bg-black">
+              <iframe
+                src={`https://www.youtube.com/embed/${
+                  project.video.split("v=")[1]
+                }?autoplay=1&mute=1&loop=1&playlist=${
+                  project.video.split("v=")[1]
+                }`}
+                className="w-full h-full"
+                title={project.title}
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              ></iframe>
+              
+              {/* Desktop Buttons (Hover) */}
+              <div className="hidden md:flex absolute bottom-4 left-1/2 -translate-x-1/2 gap-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                {project.liveLink && (
+                  <a
+                    href={project.liveLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="bg-white text-black border-2 px-6 py-2 rounded-lg hover:bg-gray-200 transition-colors font-medium"
+                  >
+                    Live
+                  </a>
+                )}
+                <a
+                  href={project.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-white text-black px-6 py-2  border-2 rounded-lg hover:bg-gray-200 transition-colors font-medium"
+                >
+                  Code
+                </a>
               </div>
             </div>
-          </SwiperSlide>
+          </div>
+
+          {/* Mobile Buttons (Always Visible) */}
+          <div className="flex md:hidden order-1 gap-4 justify-center mt-4 w-full">
+            {project.liveLink && (
+              <a
+                href={project.liveLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-white text-black px-6 py-2 rounded-lg hover:bg-gray-200 transition-colors font-medium"
+              >
+                Live
+              </a>
+            )}
+            <a
+              href={project.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-white text-black px-6 py-2 rounded-lg hover:bg-gray-200 transition-colors font-medium"
+            >
+              Code
+            </a>
+          </div>
+        </div>
+      </SwiperSlide>
         ))}
       </Swiper>
 

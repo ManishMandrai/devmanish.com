@@ -107,7 +107,7 @@ export default function MyStrength() {
 
 
         {/* Elastic Connector Line - Adjusted to the correct position */}
-        <div className="absolute hidden sm:inline left-1/4 top-1/2 w-1/2 h-1 pointer-events-none">
+        <div className="absolute hidden mt-[-90px] sm:inline left-1/4 top-1/2 w-1/2 h-1 pointer-events-none">
           <svg width="500" height="150" >
             <path ref={svgPathRef} d={finalPath} stroke="white" fill="transparent" />
           </svg>
@@ -120,7 +120,7 @@ export default function MyStrength() {
       <div>
         
 
-        <div className="lg:px-100 sm:px-40 px-8 -z py-0 my-0">
+        <div className="lg:px-100 sm:mt-[-50px] sm:px-40 px-8 -z py-0 my-0">
           <img src={Bg} alt="" className="opacity-20" />
         </div>
       </div>
