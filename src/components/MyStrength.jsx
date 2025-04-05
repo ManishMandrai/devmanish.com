@@ -54,7 +54,7 @@ export default function MyStrength() {
   return (
     <div ref={containerRef} className="relative">
       <div className="max-w-7xl mx-auto px-4 lg:px-0 sm:px-8 relative overflow-hidden">
-        <h2 className="sm:text-center mb-12 relative z-10">What I Bring to the Table</h2>
+        <h2 className=" mb-12 relative z-10">What I Bring to the Table</h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-20 lg:gap-50 relative z-10">
           <div className="border border-white/20 lg:p-8 p-4 shadow-md h-fit object-cover backdrop-blur-lg rounded-xl inline-flex flex-col">

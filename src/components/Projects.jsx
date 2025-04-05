@@ -47,8 +47,8 @@ const Projects = () => {
   }, []);
 
   return (
-    <div className="max-w-7xl mx-auto relative">
-      <h2 className="sm:text-center px-4 pb-8 sm:pb-0">Personal Experiments</h2>
+    <div className="max-w-7xl mx-auto  relative">
+      <h2 className="sm:text-center  px-4 pb-8 sm:pb-0">Personal Experiments</h2>
       <Swiper
         navigation={{
           nextEl: ".custom-swiper-next",
