@@ -14,7 +14,7 @@ const Projects = () => {
         "A dynamic and responsive e-commerce application built with the MERN stack (MongoDB, Express.js, React, Node.js). It includes user authentication, product management, a shopping cart, and secure payment integration for ",
       skills: ["React.js", "Node", "MongoDB"],
       video: "https://www.youtube.com/watch?v=uPTxeoC_MuM",
-      liveLink: "https://manish-shoping-app.vercel.app/",
+      // liveLink: "https://manish-shoping-app.vercel.app/",
       github: "https://github.com/ManishMandrai/Manish.Shoping_App",
     },
     {
@@ -48,7 +48,7 @@ const Projects = () => {
 
   return (
     <div className="max-w-7xl mx-auto  relative">
-      <h2 className="sm:text-center  px-4 pb-8 sm:pb-0">Personal Experiments</h2>
+      <h2 className=" px-4 pb-8 sm:pb-0">Personal Experiments</h2>
       <Swiper
         navigation={{
           nextEl: ".custom-swiper-next",
