@@ -8,6 +8,7 @@ import {
   SiMongodb,
   SiPostgresql,
   SiPrisma,
+  SiTypescript,
 } from "react-icons/si";
 import { RiDatabase2Line } from "react-icons/ri";
 import Socialicons from "./Socialicons";
@@ -17,13 +18,13 @@ const Hero = () => {
   const headingRef = useRef(null);
   const skills = [
     { icon: SiJavascript, name: "JavaScript" },
+    { icon: SiMongodb, name: "MongoDB" },
+    { icon: SiExpress, name: "Express" },
     { icon: SiReact, name: "React" },
     { icon: SiNodedotjs, name: "Node.js" },
-    { icon: SiExpress, name: "Express" },
-    { icon: SiMongodb, name: "MongoDB" },
-    { icon: SiPostgresql, name: "PostgreSQL" },
-    { icon: SiPrisma, name: "Prisma" },
-    { icon: RiDatabase2Line, name: " NeonDB" },
+    // { icon: SiPostgresql, name: "PostgreSQL" },
+    { icon: SiTypescript, name: "TypeScript" },
+    // { icon: RiDatabase2Line, name: " NeonDB" },
   ];
 
   useEffect(() => {
@@ -78,7 +79,7 @@ const Hero = () => {
 
           {/* Skills Section */}
           <div className="my-8 w-full px-4">
-            <div className="grid grid-cols-3 md:grid-cols-8 gap-3 max-w-5xl mx-auto">
+            <div className="grid grid-cols-3 md:grid-cols-6 gap-3 max-w-5xl mx-auto">
               {skills.map((skill, index) => (
                 <div
                   key={index}
