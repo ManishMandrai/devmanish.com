@@ -32,6 +32,19 @@ const experienceData = [
     testimonialLink: "#",
     image: matural,
   },
+   {
+    id: 3,
+    company: "BoomXMedia ",
+    url: "https://www.boomxmedia.com/",
+    type: "Frontend Developer",
+    dates: "June 2025 - Present",
+    description:
+      "Engineered responsive, high-performance websites with React.js, Next.js, and Tailwind CSS, improving Core Web Vitals (FCP/LCP <1.5s). Implemented SEO-driven development practices, boosting organic traffic growth by ~30% across client projects. Supported email marketing campaigns by building cross-device HTML templates, enhancing CTR and engagement.",
+    tags: ["React", "Next.js", "CSS", "HTML", "Tailwind"],
+    certificateLink: "#",
+    testimonialLink: "#",
+    image: "https://res.cloudinary.com/dqky5tir2/image/upload/v1759053289/boomxmedia_2_dwgw9j.jpg",
+  },
 ];
 
 const Experience = () => {
