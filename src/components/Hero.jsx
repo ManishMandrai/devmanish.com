@@ -85,7 +85,7 @@ const Hero = () => {
                   key={index}
                   className="flex items-center justify-center border border-[#00AEEF] rounded-lg px-1 sm:px-3 py-2.5 space-x-2 hover:bg-[#010101] hover:scale-105 transition-colors"
                 >
-                  <skill.icon className="text-xl md:text-2xl" />
+                  <skill.icon className="text-2xl md:text-2xl" />
                   <span className="text-sm font-medium">{skill.name}</span>
                 </div>
               ))}
