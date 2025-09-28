@@ -27,7 +27,7 @@ const experienceData = [
     dates: "Mar-May 2025",
     description:
       "Developed and deployed a full-fledged e-commerce platform using the MERN stack, featuring authentication, real-time order tracking, payments, and email verification. Launched it as a live business at matural.shop, serving real customers and managing active transactions. Led complete development and operations, including UI/UX, feature rollouts, customer support, and digital marketing.",
-    tags: ["React", "JavaScript", "cloudinary", "Node.js"],
+    tags: ["React.js", "JavaScript", "Cloudinary", "Node.js", "MongoDB", "Express"],
     certificateLink: "#",
     testimonialLink: "#",
     image: matural,
@@ -41,8 +41,8 @@ const experienceData = [
     description:
       "Engineered responsive, high-performance websites with React.js, Next.js, and Tailwind CSS, improving Core Web Vitals (FCP/LCP <1.5s). Implemented SEO-driven development practices, boosting organic traffic growth by ~30% across client projects. Supported email marketing campaigns by building cross-device HTML templates, enhancing CTR and engagement.",
     tags: ["React", "Next.js", "CSS", "HTML", "Tailwind"],
-    certificateLink: "#",
-    testimonialLink: "#",
+    // certificateLink: "#",
+    // testimonialLink: "#",
     image: "https://res.cloudinary.com/dqky5tir2/image/upload/v1759053289/boomxmedia_2_dwgw9j.jpg",
   },
 ];
@@ -97,7 +97,7 @@ const Experience = () => {
                 ))}
               </div>
               <div className="flex flex-wrap gap-6">
-                <Link
+                {/* <Link
                   to="/certificate"
                   className="flex items-center gap-2 text-sm hover:text-blue-400"
                 >
@@ -110,7 +110,7 @@ const Experience = () => {
                 >
                   <FaQuoteLeft /> Testimonial
                   <FaExternalLinkAlt className="text-xs ml-1" />
-                </Link>
+                </Link> */}
               </div>
             </div>
           </div>

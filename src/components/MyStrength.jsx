@@ -1,7 +1,19 @@
 import { useEffect, useRef, useState } from "react";
 import { FaPaintBrush, FaCode } from "react-icons/fa";
 import { Sparkles } from "lucide-react";
-import { SiFigma, SiCanva, SiAdobeillustrator, SiTailwindcss, SiReact, SiJavascript, SiNodedotjs, SiFirebase } from "react-icons/si";
+import {
+  SiFigma,
+  SiCanva,
+  SiAdobeillustrator,
+  SiTailwindcss,
+  SiReact,
+  SiJavascript,
+  SiNodedotjs,
+  SiFirebase,
+  SiOpenai,
+  SiNextdotjs,
+  SiTypescript,
+} from "react-icons/si";
 import gsap from "gsap";
 import Bg from "../assets/ss01.png";
 
@@ -11,13 +23,11 @@ const SkillTag = ({ icon: Icon, name }) => (
   </span>
 );
 
-
-
 export default function MyStrength() {
   const svgPathRef = useRef(null);
   const containerRef = useRef(null);
   const finalPath = "M 10 100 Q 550 100 990 100";
-  
+
   useEffect(() => {
     const handleMouseMove = (e) => {
       if (!svgPathRef.current) return;
@@ -25,7 +35,7 @@ export default function MyStrength() {
       const x = e.clientX - left;
       const y = e.clientY - top;
       const newPath = `M 10 100 Q ${x} ${y} 990 100`;
-      
+
       gsap.to(svgPathRef.current, {
         attr: { d: newPath },
         duration: 0.3,
@@ -44,7 +54,7 @@ export default function MyStrength() {
     const container = containerRef.current;
     container.addEventListener("mousemove", handleMouseMove);
     container.addEventListener("mouseleave", handleMouseLeave);
-    
+
     return () => {
       container.removeEventListener("mousemove", handleMouseMove);
       container.removeEventListener("mouseleave", handleMouseLeave);
@@ -65,7 +75,12 @@ export default function MyStrength() {
                 <span className="block h-1 w-30 bg-blue-400 rounded-full mt-1"></span>
               </h3>
             </div>
-            <p>I'm a UI/UX web designer passionate about creating intuitive and visually engaging digital experiences. I focus on blending aesthetics with functionality to design seamless, user-friendly interfaces that enhance interaction and engagement.</p>
+            <p>
+              I'm a UI/UX web designer passionate about creating intuitive and
+              visually engaging digital experiences. I focus on blending
+              aesthetics with functionality to design seamless, user-friendly
+              interfaces that enhance interaction and engagement.
+            </p>
             <div className="flex flex-wrap gap-2 pt-4">
               <SkillTag icon={SiFigma} name="Figma" />
               <SkillTag icon={SiCanva} name="Canva" />
@@ -86,40 +101,33 @@ export default function MyStrength() {
                 <span className="block h-1 w-45 bg-green-400 rounded-full mt-1"></span>
               </h3>
             </div>
-            <p className="sm:text-right">I'm a web developer passionate about building responsive and high-performance websites. I focus on clean code, seamless functionality, and user-friendly experiences to create dynamic and engaging digital solutions.</p>
+            <p className="sm:text-right">
+              I'm a web developer passionate about building responsive and
+              high-performance websites. I focus on clean code, seamless
+              functionality, and user-friendly experiences to create dynamic and
+              engaging digital solutions.
+            </p>
             <div className="flex flex-wrap gap-2 pt-4">
               <SkillTag icon={SiReact} name="React" />
-              <SkillTag icon={SiNodedotjs} name="Node.js" />
-              <SkillTag icon={SiFirebase} name="Firebase" />
-              <SkillTag icon={SiJavascript} name="JavaScript" />
+              <SkillTag icon={SiTypescript} name="TypeScript" />
+              <SkillTag icon={SiNextdotjs} name="Next.js" />
+              <SkillTag icon={SiOpenai} name="AI" />
             </div>
           </div>
         </div>
 
-{/* 
-        <div className="hidden md:block absolute inset-0 pointer-events-none">
-          <div className="relative h-full w-full">
-            <div className="absolute left-1/4  top-1/2 w-1/2 h-1 bg-gradient-to-r from-blue-400/30 to-green-400/30 rounded-full transform -translate-y-1/2"></div>
-          </div>
-        </div> */}
-
-
-
-
-        {/* Elastic Connector Line - Adjusted to the correct position */}
         <div className="absolute hidden mt-[-90px] sm:inline left-1/4 top-1/2 w-1/2 h-1 pointer-events-none">
-          <svg width="500" height="150" >
-            <path ref={svgPathRef} d={finalPath} stroke="white" fill="transparent" />
+          <svg width="500" height="150">
+            <path
+              ref={svgPathRef}
+              d={finalPath}
+              stroke="white"
+              fill="transparent"
+            />
           </svg>
         </div>
-
-
-
-
       </div>
       <div>
-        
-
         <div className="lg:px-100 sm:mt-[-50px] sm:px-40 px-8 -z py-0 my-0">
           <img src={Bg} alt="" className="opacity-20" />
         </div>
