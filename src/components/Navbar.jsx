@@ -50,26 +50,26 @@ const Navbar = () => {
             >
               Hire Me
             </NavLink>
-              <button
-            onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-            className="p-2 rounded-full  transition hover:scale-110"
-          >
-            {theme === "dark" ? (
-              <SunIcon className="h-6 w-6 text-yellow-400" />
-            ) : (
-              <MoonIcon className="h-6 w-6 text-gray-700" />
-            )}
-          </button>
+            <button
+              onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+              className="p-2 rounded-full  transition hover:scale-110"
+            >
+              {theme === "dark" ? (
+                <SunIcon className="h-6 w-6 text-yellow-400" />
+              ) : (
+                <MoonIcon className="h-6 w-6 text-gray-700" />
+              )}
+            </button>
 
           </div>
 
-          
+
 
           {/* Mobile Menu Button */}
           <div className="md:hidden flex items-center">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="inline-flex items-center justify-center p-2 rounded-md focus:outline-none"
+              className="inline-flex items-center justify-center ml-28 rounded-md focus:outline-none"
             >
               {isOpen ? (
                 <XIcon className="h-8 w-8" aria-hidden="true" />
@@ -81,18 +81,34 @@ const Navbar = () => {
 
 
           </div>
-        
+          <button
+            onClick={() => {
+              setTheme(theme === "dark" ? "light" : "dark");
+              setIsOpen(false);
+              
+            }}
+            className="transition md:hidden "
+          >
+            {theme === "dark" ? (
+              <SunIcon className="h-7 w-7 text-yellow-400" />
+            ) : (
+              <MoonIcon className="h-7 w-7 " />
+            )}
+          </button>
         </div>
+
 
       </div>
 
 
       {/* Mobile Menu */}
+
       <div
         className={`md:hidden fixed inset-0 z-40 transform ${isOpen ? "translate-x-0" : "-translate-x-full"
           } transition-transform duration-300 ease-in-out`}
       >
         <div className="fixed inset-0 " onClick={() => setIsOpen(false)} />
+
         <div className="relative w-4/5 max-w-[85%]  h-full ">
           <div className=" border-b border-white/20">
             <NavLink to="/" className="flex items-center">
@@ -130,19 +146,7 @@ const Navbar = () => {
             <Socialicons />
           </div>
         </div>
-        <button
-          onClick={() => {
-            setTheme(theme === "dark" ? "light" : "dark");
-            setIsOpen(false);
-          }}
-          className="p-2 w-fit rounded-full bg-white/10 dark:bg-black/20 border border-white/20 transition"
-        >
-          {theme === "dark" ? (
-            <SunIcon className="h-7 w-7 text-yellow-400" />
-          ) : (
-            <MoonIcon className="h-7 w-7 text-gray-700" />
-          )}
-        </button>
+
       </div>
     </nav>
   );

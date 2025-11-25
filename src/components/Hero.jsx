@@ -13,6 +13,7 @@ import {
 import { RiDatabase2Line } from "react-icons/ri";
 import Socialicons from "./Socialicons";
 import TextChange from "./TextChange";
+// import SpiderWeb from "./SpiderWeb";
 
 const Hero = () => {
   const headingRef = useRef(null);
@@ -52,6 +53,9 @@ const Hero = () => {
 
   return (
     <div className="flex flex-col justify-center items-center min-h-screen p-4 sm:p-10 md:p-20 overflow-hidden">
+{/* <SpiderWeb position="top-right" />
+<SpiderWeb position="top-left" /> */}
+
       <div className="flex flex-col items-center w-full max-w-[1800px] mx-auto">
         <div className="text-center w-full">
           <h1
