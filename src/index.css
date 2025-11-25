@@ -3,8 +3,8 @@
 @import "tailwindcss";
 
 body {
-  background-color: #0c0c0c;
-  color: White;
+  /* background-color: #0c0c0c;
+  color: White; */
   /* font-family: "Merriweather", serif; */
   font-family: "Varela Round", sans-serif;
 }
@@ -12,8 +12,15 @@ body {
 p {
   font-size: 16px;
   font-weight: 500;
-  color: #e0e0e0;
+  }
+
+.theme-logo {
+  transition: filter 0.3s ease;
 }
+html.light .theme-logo {
+  filter: invert(1) brightness(1.0);
+}
+
 
 h2 {
   font-size: 36px;
@@ -21,11 +28,11 @@ h2 {
 }
 @media (max-width: 480px) {
   h2 {
-    font-size: 28px; /* Even smaller font for mobile screens */
+    font-size: 24px;/* Even smaller font for mobile screens */
   }
 }
 h3 {
-  font-size: 28px;
+  font-size: 28px;   
 }
 @media (max-width: 480px) {
   h3 {

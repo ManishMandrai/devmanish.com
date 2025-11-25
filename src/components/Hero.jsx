@@ -56,7 +56,7 @@ const Hero = () => {
         <div className="text-center w-full">
           <h1
             ref={headingRef}
-            className="text-white text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-extrabold mb-4 overflow-hidden"
+            className=" text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-extrabold mb-4 overflow-hidden"
             style={{ fontFamily: "Poppins, sans-serif" }}
           >
             {name.map((char, index) => (
@@ -71,7 +71,7 @@ const Hero = () => {
             I'm a <TextChange />
           </div>
 
-          <p className="text-gray-200 leading-relaxed mt-4 max-w-3xl mx-auto">
+          <p className="leading-relaxed mt-4 max-w-3xl mx-auto">
             Turning coffee into code and ideas into reality—full-stack developer
             crafting seamless, high-performance web apps that users love to
             explore!

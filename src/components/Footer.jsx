@@ -13,7 +13,7 @@ const Footer = () => {
   const [location, setLocation] = useState("23.268614, 77.475184");
 
   return (
-    <footer className="border-t border-white/50 pt-10 pb-2">
+    <footer className="border-t pt-10 pb-2">
       <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
         {/* Logo Section */}
         <div className="flex flex-col items-center lg:items-start space-y-4">
@@ -27,7 +27,7 @@ const Footer = () => {
             <a
               target="_blank"
               rel="noopener noreferrer"
-              className="cursor-pointer text-white hover:text-blue-700 transition-colors duration-300"
+              className="cursor-pointer  hover:text-blue-700 transition-colors duration-300"
               href="https://www.linkedin.com/in/manish-kumar-mandrai/"
             >
               <CiLinkedin className="w-6.5 h-6.5 md:w-8 md:h-8" />

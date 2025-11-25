@@ -110,10 +110,10 @@ const About = () => {
 
           <div>
             <h1 className="text-4xl font-bold mb-4">Manish Kumar</h1>
-            <h4 className="text-lg text-gray-300 mb-6">
+            <h4 className="text-lg  mb-6">
               Full-Stack Developer | C++ Programmer
             </h4>
-            <p className="text-gray-400 leading-relaxed mb-4">
+            <p className="leading-relaxed mb-4">
               Hi, I'm Manish Kumar, a passionate and detail-oriented Full-Stack
               Web Developer and C++ Programmer. As a final-year college student,
               I have hands-on experience in building dynamic and scalable web
@@ -121,14 +121,14 @@ const About = () => {
               skills and deep understanding of algorithms enable me to write
               efficient and optimized code.
             </p>
-            <p className="text-gray-400 leading-relaxed mb-4">
+            <p className=" leading-relaxed mb-4">
               With a keen eye for detail and a strong grasp of both front-end
               and back-end technologies, I enjoy crafting seamless user
               experiences and robust server-side architectures. I stay up to
               date with emerging technologies and continuously refine my skills
               to develop high-quality, scalable solutions.
             </p>
-            <p className="text-gray-400 leading-relaxed mb-6">
+            <p className=" leading-relaxed mb-6">
               I'm eager to collaborate with innovative teams, solve complex
               challenges, and contribute to impactful projects. Let's connect
               and create something amazing together! 🚀
@@ -165,7 +165,7 @@ const About = () => {
             {skillsCategories.map((category, index) => (
               <div key={index} className="mb-6">
                 <div
-                  className="flex items-center justify-between cursor-pointer p-3  border border-white/10 rounded-lg hover:bg-[#2a2a2a] transition-all"
+                  className="flex items-center justify-between cursor-pointer p-3  rounded-lg transition-all"
                   onClick={() => toggleSection(index)}
                 >
                   <h4 className="text-lg font-semibold">{category.title}</h4>
@@ -177,18 +177,18 @@ const About = () => {
                 </div>
 
                 {openSections[index] && (
-                  <div className="mt-4 grid grid-cols-2 sm:grid-cols-3 gap-3 border border-white/10 p-4 rounded-xl">
+                  <div className="mt-4 grid grid-cols-2 sm:grid-cols-3 gap-3 border p-4 rounded-xl">
                     {category.skills.map((skill, skillIndex) => (
                       <div
                         key={skillIndex}
-                        className="flex items-center justify-center border rounded-lg p-3 space-x-2 hover:bg-[#1a1a1a] hover:scale-105 transition-all cursor-pointer"
+                        className="flex items-center justify-center border rounded-lg p-3 space-x-2  hover:scale-105 transition-all cursor-pointer"
                       >
                         {skill.icon ? (
                           <skill.icon className="text-xl" />
                         ) : (
                           <FaCode className="text-xl" />
                         )}
-                        <span className="text-sm font-medium text-gray-300">
+                        <span className="text-sm font-medium ">
                           {skill.name}
                         </span>
                       </div>

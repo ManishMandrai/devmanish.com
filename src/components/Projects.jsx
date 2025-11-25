@@ -7,6 +7,8 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 
+
+
 const Projects = () => {
   const projects = [
     {
@@ -87,7 +89,7 @@ const Projects = () => {
               {/* Project Details */}
               <div className="flex-1 flex flex-col gap-4 order-2 md:order-0">
                 <h3>{project.title}</h3>
-                <p className="text-gray-100 text-base text-left">
+                <p className=" text-base text-left">
                   {project.description}
                 </p>
                 <div className="flex flex-wrap gap-2 mt-4">

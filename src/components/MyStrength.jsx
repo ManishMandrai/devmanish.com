@@ -1,137 +1,90 @@
-import { useEffect, useRef, useState } from "react";
-import { FaPaintBrush, FaCode } from "react-icons/fa";
-import { Sparkles } from "lucide-react";
-import {
-  SiFigma,
-  SiCanva,
-  SiAdobeillustrator,
-  SiTailwindcss,
-  SiReact,
-  SiJavascript,
-  SiNodedotjs,
-  SiFirebase,
-  SiOpenai,
-  SiNextdotjs,
-  SiTypescript,
-} from "react-icons/si";
-import gsap from "gsap";
-import Bg from "../assets/ss01.png";
+import { FaLaptopCode, FaServer } from "react-icons/fa";
+import ThreeLaptop from "./ThreeLaptop";
 
-const SkillTag = ({ icon: Icon, name }) => (
-  <span className="flex items-center justify-center border border-[#00AEEF] rounded-lg px-5 sm:px-3 py-2 space-x-1 hover:bg-[#010101] hover:scale-105 transition-colors">
-    <Icon /> <span>{name}</span>
-  </span>
+const MacWindow = ({ icon: Icon, title, desc, bullets }) => (
+  <div className="rounded-xl border  bg-white/5 dark:bg-black/20 backdrop-blur-md overflow-hidden">
+
+    {/* MacOS Title Bar */}
+    <div className="flex items-center gap-2 px-4 py-2 border-b  dark:bg-black/30">
+      <span className="w-3 h-3 rounded-full bg-[#FF605C]" />
+      <span className="w-3 h-3 rounded-full bg-[#FFBD44]" />
+      <span className="w-3 h-3 rounded-full bg-[#00CA4E]" />
+      <span className="ml-3 flex items-center gap-2 font-medium">
+        <Icon className="w-4 h-4" />
+        {title}
+      </span>
+    </div>
+
+    {/* Content */}
+    <div className="p-6 space-y-4">
+      <p className="text-sm leading-relaxed">{desc}</p>
+
+      <ul className="space-y-2 text-sm">
+        {bullets.map((b, i) => (
+          <li key={i} className="flex gap-3 items-start">
+            <span className="w-2 h-2 rounded-full mt-1 bg-gray-400"></span>
+            <span>{b}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
 );
 
 export default function MyStrength() {
-  const svgPathRef = useRef(null);
-  const containerRef = useRef(null);
-  const finalPath = "M 10 100 Q 550 100 990 100";
-
-  useEffect(() => {
-    const handleMouseMove = (e) => {
-      if (!svgPathRef.current) return;
-      const { left, top } = containerRef.current.getBoundingClientRect();
-      const x = e.clientX - left;
-      const y = e.clientY - top;
-      const newPath = `M 10 100 Q ${x} ${y} 990 100`;
-
-      gsap.to(svgPathRef.current, {
-        attr: { d: newPath },
-        duration: 0.3,
-        ease: "power3.out",
-      });
-    };
-
-    const handleMouseLeave = () => {
-      gsap.to(svgPathRef.current, {
-        attr: { d: finalPath },
-        duration: 1.5,
-        ease: "elastic.out(1,0.2)",
-      });
-    };
-
-    const container = containerRef.current;
-    container.addEventListener("mousemove", handleMouseMove);
-    container.addEventListener("mouseleave", handleMouseLeave);
-
-    return () => {
-      container.removeEventListener("mousemove", handleMouseMove);
-      container.removeEventListener("mouseleave", handleMouseLeave);
-    };
-  }, []);
-
   return (
-    <div ref={containerRef} className="relative">
-      <div className="max-w-7xl mx-auto px-4 lg:px-0 sm:px-8 relative overflow-hidden">
-        <h2 className=" mb-12 relative z-10">What I Bring to the Table</h2>
+    <section className="w-full p-4 min-h-screen items-center py-4 ">
+      <div className="max-w-7xl mx-auto w-full">
+        <h2 className="text-sm tracking-wide font-semibold mb-4">
+          The Craft Behind My Work
+        </h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-20 lg:gap-50 relative z-10">
-          <div className="border border-white/20 lg:p-8 p-4 shadow-md h-fit object-cover backdrop-blur-lg rounded-xl inline-flex flex-col">
-            <div className="flex items-center space-x-3 mb-4">
-              <FaPaintBrush className="text-3xl text-blue-400" />
-              <h3 className="text-2xl font-medium relative">
-                Design
-                <span className="block h-1 w-30 bg-blue-400 rounded-full mt-1"></span>
-              </h3>
-            </div>
-            <p>
-              I'm a UI/UX web designer passionate about creating intuitive and
-              visually engaging digital experiences. I focus on blending
-              aesthetics with functionality to design seamless, user-friendly
-              interfaces that enhance interaction and engagement.
-            </p>
-            <div className="flex flex-wrap gap-2 pt-4">
-              <SkillTag icon={SiFigma} name="Figma" />
-              <SkillTag icon={SiCanva} name="Canva" />
-              <SkillTag icon={SiAdobeillustrator} name="Illustrator" />
-              <SkillTag icon={SiTailwindcss} name="Tailwind" />
-            </div>
-          </div>
+      </div>
 
-          <div className="absolute inset-0 flex justify-center items-center -z-10">
-            <Sparkles className="text-yellow-400 opacity-20 text-6xl animate-pulse" />
-          </div>
+      <div className="max-w-7xl mx-auto w-full px-4 grid grid-cols-1 md:grid-cols-2 gap-20 md:gap-32 items-center">
 
-          <div className="border border-white/20 p-8 shadow-md backdrop-blur-lg rounded-xl sm:mt-30">
-            <div className="flex sm:justify-end space-x-3 mb-4">
-              <FaCode className="text-3xl text-green-400" />
-              <h3 className="text-2xl font-medium relative">
-                Engineering
-                <span className="block h-1 w-45 bg-green-400 rounded-full mt-1"></span>
-              </h3>
-            </div>
-            <p className="sm:text-right">
-              I'm a web developer passionate about building responsive and
-              high-performance websites. I focus on clean code, seamless
-              functionality, and user-friendly experiences to create dynamic and
-              engaging digital solutions.
-            </p>
-            <div className="flex flex-wrap gap-2 pt-4">
-              <SkillTag icon={SiReact} name="React" />
-              <SkillTag icon={SiTypescript} name="TypeScript" />
-              <SkillTag icon={SiNextdotjs} name="Next.js" />
-              <SkillTag icon={SiOpenai} name="AI" />
-            </div>
-          </div>
-        </div>
 
-        <div className="absolute hidden mt-[-90px] sm:inline left-1/4 top-1/2 w-1/2 h-1 pointer-events-none">
-          <svg width="500" height="150">
-            <path
-              ref={svgPathRef}
-              d={finalPath}
-              stroke="white"
-              fill="transparent"
+        {/* LEFT SIDE (CONTENT) */}
+        <div className="order-2 md:order-2 space-y-10">
+
+          {/* Better Heading */}
+
+          {/* Cards */}
+          <div className="space-y-8">
+            <MacWindow
+              icon={FaLaptopCode}
+              title="Frontend Engineering"
+              desc="Crafting clean, interactive, scalable interfaces using modern component architecture."
+              bullets={[
+                "Component-driven UI (React, Next.js)",
+                "Responsive layouts with real-world UX",
+                "SSR, routing & state management",
+                "Smooth animations & micro-interactions",
+              ]}
             />
-          </svg>
+
+            <MacWindow
+              icon={FaServer}
+              title="Backend Systems"
+              desc="Designing durable server logic, APIs, and integrations that scale with traffic and product needs."
+              bullets={[
+                "REST APIs, auth & validation",
+                "Database modeling & optimization",
+                "Deployment-ready backend logic",
+                "Secure & reliable architecture",
+              ]}
+            />
+          </div>
         </div>
-      </div>
-      <div>
-        <div className="lg:px-100 sm:mt-[-50px] sm:px-40 px-8 -z py-0 my-0">
-          <img src={Bg} alt="" className="opacity-20" />
+
+        {/* RIGHT SIDE (3D MODEL) */}
+        <div className="order-1 md:order-1 flex justify-center  md:justify-end">
+          <div className="w-full  h-[360px] sm:h-[480px] md:h-[600px] max-w-xl sm:pt-28 ">
+            <ThreeLaptop  />
+          </div>
         </div>
+
       </div>
-    </div>
+    </section>
   );
 }

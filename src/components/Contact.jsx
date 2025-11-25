@@ -34,7 +34,7 @@ const Contact = () => {
   };
 
   return (
-    <div className="text-white px-4 my-10 max-w-screen-md mx-auto">
+    <div className=" px-4 my-10 max-w-screen-md mx-auto">
       {/* Header Section */}
       <h2 className="font-bold sm:text-center mb-12">Shoot me a message</h2>
 
@@ -48,7 +48,7 @@ const Contact = () => {
                 name="to_name"
                 type="text"
                 placeholder="Enter your name"
-                className="w-full p-3 bg-transparent text-white border-0 border-b-2 border-white focus:outline-none focus:ring-0 placeholder-gray-400"
+                className="w-full p-3 bg-transparent  border-0 border-b-2  focus:outline-none focus:ring-0 placeholder-gray-400"
                 required
               />
             </div>
@@ -57,7 +57,7 @@ const Contact = () => {
                 name="your_Email"
                 type="email"
                 placeholder="Enter your email address"
-                className="w-full p-3 bg-transparent text-white border-0 border-b-2 border-white focus:outline-none focus:ring-0 placeholder-gray-400"
+                className="w-full p-3 bg-transparent  border-0 border-b-2  focus:outline-none focus:ring-0 placeholder-gray-400"
                 required
               />
             </div>
@@ -69,7 +69,7 @@ const Contact = () => {
               name="message"
               rows="3"
               placeholder="Execute message();"
-              className="w-full p-3 bg-transparent text-white border-0 border-b-2 border-white focus:outline-none focus:ring-0 placeholder-gray-400"
+              className="w-full p-3 bg-transparent  border-0 border-b-2  focus:outline-none focus:ring-0 placeholder-gray-400"
               required
             ></textarea>
           </div>
