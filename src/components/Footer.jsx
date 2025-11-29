@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import manish from "../assets/hsinam.png";
+import manish from "../assets/logodrk.png";
 import { FaInstagram, FaLinkedinIn, FaGithub } from "react-icons/fa";
 import { CiLinkedin } from "react-icons/ci";
 import { Link } from "react-router-dom";

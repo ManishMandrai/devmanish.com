@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
-import Logo from "../assets/hsinam.png";
+import Logo from "../assets/logodrk.png";
 import { MenuIcon, XIcon } from "@heroicons/react/outline";
 import { CiLinkedin } from "react-icons/ci";
 import { FaInstagram } from "react-icons/fa";
@@ -10,7 +10,8 @@ import Socialicons from "./Socialicons";
 import { SunIcon, MoonIcon } from "@heroicons/react/outline";
 import useTheme from "../hooks/useTheme";
 
-
+import LogoDark from "../assets/logodrk.png";   // dark mode logo
+import LogoLight from "../assets/logolgt.png";  // light mode logo
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -22,13 +23,14 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-2 sm:px-8 lg:px-0">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <NavLink to="/" className="flex-shrink-0">
-            <img
-              src={Logo}
-              alt="MANISH"
-              className="w-48 transition-transform theme-logo"
-            />
-          </NavLink>
+         <NavLink to="/" className="flex items-center">
+  <img
+    src={theme === "dark" ? LogoDark : LogoLight}
+    alt="MANISH"
+    className="w-52 p-[13.4px] transition-transform"
+  />
+</NavLink>
+
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-4">

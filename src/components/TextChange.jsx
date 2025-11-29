@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-const texts = ["Full Stack Dev", "UI/UX Designer", "Software Engineer"];
+const texts = ["Full Stack Dev",  "Software Engineer"];
 
 const TextChange = () => {
   const [text, setText] = useState("");

@@ -42,3 +42,35 @@ h3 {
 h4{
   font-size: 20px;
 }
+
+
+/* global icon color defaults */
+:root {
+  --icon-color: #000; /* light mode default */
+}
+
+/* when .dark exists on an ancestor (your theme toggle), icons become white */
+.dark .social-icons {
+  --icon-color: #fff;
+}
+
+/* SVG icons inside .social-icons use the CSS variable color */
+.social-icons a svg {
+  color: var(--icon-color);
+  transition: color .18s ease, transform .12s ease;
+  will-change: color, transform;
+}
+
+/* hover uses the inline set --hover-color from the <a> */
+.social-icons a:hover svg,
+.social-icons a:focus svg {
+  color: var(--hover-color);
+  transform: scale(1.08);
+}
+
+/* keep anchor spacing/interaction consistent */
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 1.25rem; /* same as space-x-6 */
+}
