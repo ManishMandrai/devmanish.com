@@ -54,53 +54,46 @@ export default function MyStrength() {
     { label: "Python", Icon: SiPython, color: "#3776AB" },
   ];
 
-  // animate one row (duplicated items inside to create a seamless loop)
-  const animateRow = (ref, direction = "ltr", speed = 40) => {
-    const el = ref.current;
-    if (!el) return;
+const animateRow = (ref, direction = "ltr", speed = 40) => {
+  const el = ref.current;
+  if (!el) return;
 
-    // We'll animate by pixel distance equal to half the scrollWidth (we duplicated the content)
-    const distance = el.scrollWidth / 2;
+  // width of one full copy (since you duplicated content)
+  const fullWidth = el.scrollWidth / 2;
 
-    // reset any previous tweens on the element
-    gsap.killTweensOf(el);
+  gsap.killTweensOf(el);
 
-    // animate x to -distance (left) or +distance (right) and repeat forever
-    gsap.to(el, {
-      x: direction === "ltr" ? -distance : distance,
+  gsap.fromTo(
+    el,
+    { x: 0 },
+    {
+      x: direction === "ltr" ? -fullWidth : fullWidth,
       duration: speed,
       ease: "none",
       repeat: -1,
       modifiers: {
-        x: (x) => {
-          // keep x inside -distance .. distance by wrapping via modulo
-          const num = parseFloat(x);
-          // if NaN fallback
-          if (Number.isNaN(num)) return "0px";
-          // wrap
-          const wrapped = ((num % distance) + distance) % distance;
-          // return negative movement when ltr to preserve continuous feel
-          return direction === "ltr" ? `${-wrapped}px` : `${wrapped}px`;
+        x: (value) => {
+          const num = parseFloat(value);
+
+          if (direction === "ltr") {
+            // moves left → right correctly
+            return `${num % -fullWidth}px`;
+          } else {
+            // moves right → left correctly
+            return `${num % fullWidth}px`;
+          }
         },
       },
-    });
-  };
+    }
+  );
+};
+
 
 useEffect(() => {
-  // Row 1 → LTR
-  animateRow(r1, "ltr", 45);
-
-  // Row 2 → RTL
-  animateRow(r2, "rtl", 38);
-
-  // Row 3 → LTR
-  animateRow(r3, "ltr", 50);
-
-  return () => {
-    gsap.killTweensOf([r1.current, r2.current, r3.current]);
-  };
+  animateRow(r1, "rtl", 30); // Row 1: Right → Left
+  animateRow(r2, "ltr", 40); // Row 2: Left → Right
+  animateRow(r3, "rtl", 32); // Row 3: Right → Left
 }, []);
-
 
 
 
