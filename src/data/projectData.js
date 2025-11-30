@@ -2,7 +2,7 @@
 const projectData = [
   {
     id: "chat-app",
-    title: "Real-Time Chat App",
+    title: " Chat App",
     category: "Projects",
     description:
       "A full-stack real-time chat platform built using Next.js, TypeScript, Convex, and Stream SDK—supporting instant messaging, channel management, live video calls, authentication via Clerk, and a fully responsive UI with Tailwind CSS.",
@@ -18,7 +18,7 @@ const projectData = [
 
   {
     id: "mearn-shop",
-    title: "Full Stack Ecommerce App",
+    title: "Ecommerce App",
     category: "Projects",
     description:
       "A dynamic and responsive e-commerce application built with the MERN stack. Includes auth, product management, shopping cart, payments and order tracking.",
@@ -34,7 +34,7 @@ const projectData = [
 
   {
     id: "gemini-clone",
-    title: "AI Chatbot - Gemini Clone",
+    title: "AI Chatbot",
     category: "Experiments",
     description:
       "An intelligent AI chatbot powered by Gemini, built using React. Provides real-time context-aware responses and a smooth conversational UI.",
@@ -50,7 +50,7 @@ const projectData = [
 
   {
     id: "chrome-ext",
-    title: "Random Password Chrome Extension",
+    title: "Chrome Exstn",
     category: "Freelance",
     description:
       "Random Password Generator Chrome extension built with React. Lightweight, customizable, and secure password generation.",

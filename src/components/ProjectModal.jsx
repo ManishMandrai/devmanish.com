@@ -8,61 +8,84 @@ export default function ProjectModal({ project, onClose }) {
   if (!project) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-end md:items-center justify-center">
-      {/* backdrop */}
+    <div className="fixed inset-0 z-50 flex items-center justify-center px-4">
+      {/* Backdrop */}
       <motion.div
-        className="absolute inset-0 backdrop-blur-sm bg-black/40"
+        className="absolute inset-0 bg-black/40 backdrop-blur-sm"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
         onClick={onClose}
       />
 
+      {/* MODAL */}
       <motion.div
-        className="relative w-full md:w-11/12 lg:w-3/4 max-h-[90vh] bg-white/80 backdrop-blur-md rounded-2xl shadow-2xl overflow-hidden"
-        initial={{ y: 60, opacity: 0 }}
+        className="
+          relative 
+          w-full 
+          max-w-[1100px] 
+          max-h-[92vh]
+          bg-white/90 
+          backdrop-blur-xl 
+          rounded-2xl 
+          shadow-2xl 
+          overflow-hidden
+          flex 
+          flex-col
+        "
+        initial={{ y: 50, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        exit={{ y: 60, opacity: 0 }}
-        transition={{ type: "spring", stiffness: 200, damping: 25, duration: 0.45 }}
+        exit={{ y: 50, opacity: 0 }}
+        transition={{ type: 'spring', stiffness: 180, damping: 22 }}
       >
-        {/* close */}
+        {/* Close */}
         <button
-          className="absolute right-4 top-4 z-30 p-2 rounded-md bg-white/70 hover:bg-white"
+          className="absolute right-4 top-4 z-20 p-2 bg-white/80 rounded-md hover:bg-white"
           onClick={onClose}
-          aria-label="close"
         >
           <IoClose size={20} />
         </button>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          <div className="p-4">
-            <MediaCarousel media={project.media} />
+        {/* CONTENT GRID */}
+        <div className="flex flex-col md:flex-row w-full h-full">
+          
+          {/* LEFT (Media) — 40% */}
+          <div className="w-full md:w-[40%] px-4 py-2 sm:mt-1 flex items-start justify-center">
+            <div className="w-full">
+              <MediaCarousel media={project.media} />
+            </div>
           </div>
 
-          <div className="p-6 overflow-y-auto max-h-[78vh]">
-            <h3 className="text-2xl font-semibold mb-2">{project.title}</h3>
-            <p className="text-sm text-neutral-600 mb-4">{project.category}</p>
+          {/* RIGHT (Description) — 60% */}
+          <div className="w-full md:w-[60%] p-4  max-h-[80vh]">
+            <h3 className="text-xl md:text-2xl font-semibold">
+              {project.title}
+            </h3>
 
-            <p className="leading-relaxed text-neutral-800 mb-4">{project.description}</p>
+            <p className=" text-sm text-neutral-500">{project.category}</p>
 
-            <div className="flex flex-wrap gap-2 mb-4">
+            <p className="mt-2 text-neutral-700 leading-relaxed">
+              {project.description}
+            </p>
+
+            <div className="flex flex-wrap gap-2 mt-4">
               {project.skills?.map((s, i) => (
                 <span
                   key={i}
-                  className="text-xs px-3 py-1 rounded-full bg-white border border-neutral-200"
+                  className="text-xs px-3 py-1 rounded-full bg-neutral-100 border border-neutral-200"
                 >
                   {s}
                 </span>
               ))}
             </div>
 
-            <div className="flex gap-3 mt-6">
+            <div className="flex gap-4 mt-4">
               {project.liveLink && (
                 <a
                   href={project.liveLink}
                   target="_blank"
                   rel="noreferrer"
-                  className="px-4 py-2 rounded-md bg-black text-white"
+                  className="px-4 py-2 bg-black text-white rounded-md"
                 >
                   View Live
                 </a>
@@ -73,13 +96,14 @@ export default function ProjectModal({ project, onClose }) {
                   href={project.github}
                   target="_blank"
                   rel="noreferrer"
-                  className="px-4 py-2 rounded-md border"
+                  className="px-4 py-2 border rounded-md hover:bg-neutral-100"
                 >
                   View Code
                 </a>
               )}
             </div>
           </div>
+
         </div>
       </motion.div>
     </div>
