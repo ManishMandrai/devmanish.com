@@ -21,7 +21,6 @@ import { FaLaptopCode, FaServer, FaHandshake, FaBolt } from "react-icons/fa";
 import useGitHubStats from "../hooks/useGitHubStats";
 
 export default function MyStrength() {
-  const stats = useGitHubStats();
 
   // refs for the 3 marquee rows
   const r1 = useRef(null);
@@ -53,49 +52,33 @@ export default function MyStrength() {
     { label: "Docker", Icon: SiDocker, color: "#2496ED" },
     { label: "Python", Icon: SiPython, color: "#3776AB" },
   ];
+  const animateRow = (ref, direction = "ltr", speed = 40) => {
+    const el = ref.current;
+    if (!el) return;
 
-const animateRow = (ref, direction = "ltr", speed = 40) => {
-  const el = ref.current;
-  if (!el) return;
+    const totalWidth = el.scrollWidth / 2; // width of one copy
 
-  // width of one full copy (since you duplicated content)
-  const fullWidth = el.scrollWidth / 2;
+    gsap.killTweensOf(el);
 
-  gsap.killTweensOf(el);
-
-  gsap.fromTo(
-    el,
-    { x: 0 },
-    {
-      x: direction === "ltr" ? -fullWidth : fullWidth,
+    gsap.to(el, {
+      x: direction === "ltr" ? -totalWidth : totalWidth,
       duration: speed,
       ease: "none",
       repeat: -1,
-      modifiers: {
-        x: (value) => {
-          const num = parseFloat(value);
-
-          if (direction === "ltr") {
-            // moves left → right correctly
-            return `${num % -fullWidth}px`;
-          } else {
-            // moves right → left correctly
-            return `${num % fullWidth}px`;
-          }
-        },
+      onRepeat: () => {
+        gsap.set(el, { x: 0 }); // reset CLEANLY each loop
       },
-    }
-  );
-};
+    });
+  };
+  useEffect(() => {
+    animateRow(r1, "ltr", 22); // Row 1 → Left to Right
+    animateRow(r2, "rtl", 28); // Row 2 → Right to Left
+    animateRow(r3, "ltr", 24); // Row 3 → Left to Right
 
-
-useEffect(() => {
-  animateRow(r1, "rtl", 30); // Row 1: Right → Left
-  animateRow(r2, "ltr", 40); // Row 2: Left → Right
-  animateRow(r3, "rtl", 32); // Row 3: Right → Left
-}, []);
-
-
+    return () => {
+      gsap.killTweensOf([r1.current, r2.current, r3.current]);
+    };
+  }, []);
 
   // Single pill markup with icon (icon colored by brand color)
   const SkillPill = ({ item }) => {
@@ -139,9 +122,15 @@ useEffect(() => {
     </div>
   );
 
+  
+
   return (
     <section className="w-full px-4 py-12">
       <div className="max-w-6xl mx-auto">
+        <h2 className="text-2xl sm:text-3xl font-semibold mb-10 opacity-90">
+  My Engineering Strengths
+</h2>
+
         {/* grid with items-stretch so both columns have equal height (right side determines height) */}
         <div className="grid grid-cols-1 md:grid-cols-[0.43fr_0.57fr] gap-4 items-stretch">
           {/* LEFT: Skill box (same total height as right) */}
@@ -149,9 +138,9 @@ useEffect(() => {
             className="rounded-lg border p-6 md:p-8 relative overflow-hidden min-h-[600px] md:min-h-full"
             style={{ borderColor: "currentColor" }}
           >
-              <h3 className="text-xl font-semibold mb-6 tracking-wide opacity-80">
-    Tech Stack & Core Tools
-  </h3>
+            <h3 className="text-xl font-semibold mb-6 tracking-wide opacity-80">
+              Tech Stack & Core Tools
+            </h3>
 
             {/* top area: three marquee strips */}
             <div className="space-y-4">
@@ -165,7 +154,8 @@ useEffect(() => {
               <img
                 src="https://github-readme-streak-stats.herokuapp.com/?user=ManishMandrai&theme=transparent&hide_border=true"
                 alt="GitHub Streak"
-                className="w-full max-w-lg"
+                className="shadow-lg shadow-black/20 dark:shadow-white/5 rounded-lg"
+                // className="w-full max-w-lg"
               />
             </div>
 
