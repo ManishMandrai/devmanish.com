@@ -12,7 +12,7 @@ const socialLinks = [
 ];
 
 const Socialicons = () => (
-  <div className="social-icons mt-10" role="navigation" aria-label="social links">
+  <div className="social-icons mt-4" role="navigation" aria-label="social links">
     {socialLinks.map(({ href, icon: Icon, color, label }, index) => (
       <a
         key={index}

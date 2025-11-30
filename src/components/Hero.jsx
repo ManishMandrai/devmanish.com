@@ -1,4 +1,4 @@
-import { useRef, useEffect } from "react";
+import React, { useRef, useEffect } from "react";
 import { gsap } from "gsap";
 import {
   SiJavascript,
@@ -6,102 +6,203 @@ import {
   SiNodedotjs,
   SiExpress,
   SiMongodb,
-  SiPostgresql,
-  SiPrisma,
   SiTypescript,
 } from "react-icons/si";
-import { RiDatabase2Line } from "react-icons/ri";
 import Socialicons from "./Socialicons";
 import TextChange from "./TextChange";
-// import SpiderWeb from "./SpiderWeb";
+import ThreeLaptop from "./ThreeLaptop";
+import { FiBriefcase, FiClock } from "react-icons/fi";
 
-const Hero = () => {
+export default function Hero() {
   const headingRef = useRef(null);
-  const skills = [
-    { icon: SiJavascript, name: "JavaScript" },
-    { icon: SiMongodb, name: "MongoDB" },
-    { icon: SiExpress, name: "Express" },
-    { icon: SiReact, name: "React" },
-    { icon: SiNodedotjs, name: "Node.js" },
-    // { icon: SiPostgresql, name: "PostgreSQL" },
-    { icon: SiTypescript, name: "TypeScript" },
-    // { icon: RiDatabase2Line, name: " NeonDB" },
-  ];
+  const leftRef = useRef(null);
+  const rightRef = useRef(null);
+
+  const name = "MANISH".split("");
 
   useEffect(() => {
-    if (headingRef.current) {
-      const chars = headingRef.current.querySelectorAll(".char");
+    // Character entrance
+    const chars = headingRef.current.querySelectorAll(".char");
 
-      gsap.set(chars, {
-        y: 150,
-        opacity: 0,
-      });
+    gsap.set(chars, {
+      y: 80,
+      opacity: 0,
+      filter: "blur(10px)",
+      scale: 0.85,
+    });
 
-      gsap.to(chars, {
-        y: 0,
-        opacity: 1,
-        stagger: 0.07,
-        duration: 0.8,
-        ease: "power4.out",
-        delay: 0.2,
-      });
-    }
+    gsap.to(chars, {
+      y: 0,
+      opacity: 1,
+      scale: 1,
+      filter: "blur(0px)",
+      ease: "back.out(1.6)",
+      duration: 0.8,
+      stagger: 0.07,
+    });
+
+    // Left + right entrance
+    gsap.fromTo(
+      leftRef.current,
+      { x: -40, opacity: 0 },
+      { x: 0, opacity: 1, duration: 0.8, ease: "power3.out", delay: 0.15 }
+    );
+    gsap.fromTo(
+      rightRef.current,
+      { x: 40, opacity: 0 },
+      { x: 0, opacity: 1, duration: 0.9, ease: "power3.out", delay: 0.25 }
+    );
+
+    // Description fade word-by-word
+    gsap.to(".word", {
+      opacity: 1,
+      y: -4,
+      duration: 0.7,
+      stagger: 0.025,
+      ease: "power2.out",
+      delay: 1.15,
+    });
+
+    // Job title subtle fade
+    gsap.from(".roleText", {
+      opacity: 0,
+      x: -20,
+      duration: 0.8,
+      ease: "power2.out",
+      delay: 1,
+    });
+
+    // Floating 3D object
+    gsap.to(rightRef.current, {
+      y: -12,
+      duration: 3,
+      repeat: -1,
+      yoyo: true,
+      ease: "ease.inOut",
+    });
   }, []);
+  const Badges = () => (
+    <div className="flex flex-wrap gap-8">
+      {/* FREELANCE BADGE */}
+      <div
+        className="
+        flex flex-col items-center justify-center 
+        px-2 py-3
+        w-32
+        text-center
+      "
+      >
+        {/* Icon (theme adaptive) */}
+        <span className="text-2xl ">
+          <FiBriefcase className="text-2xl opacity-80" />
+        </span>
 
-  // Split the name into individual characters
-  const name = "M A N I S H".split("");
+        {/* Text */}
+        <div className="mt-1 leading-tight">
+          <p className="text-sm opacity-80">3+ Freelancer</p>
+        </div>
+      </div>
 
-  return (
-    <div className="flex flex-col justify-center items-center min-h-screen p-4 sm:p-10 md:p-20 overflow-hidden">
-{/* <SpiderWeb position="top-right" />
-<SpiderWeb position="top-left" /> */}
+      {/* EXPERIENCE BADGE */}
+      <div
+        className="
+        flex flex-col items-center justify-center 
+        px-4 py-3 
+    
+        w-32
+        text-center
+      "
 
-      <div className="flex flex-col items-center w-full max-w-[1800px] mx-auto">
-        <div className="text-center w-full">
-          <h1
-            ref={headingRef}
-            className=" text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-extrabold mb-4 overflow-hidden"
-            style={{ fontFamily: "Poppins, sans-serif" }}
-          >
-            {name.map((char, index) => (
-              <span key={index} className="char inline-block">
-                {char === " " ? "\u00A0" : char}
-              </span>
-            ))}
-          </h1>
+      >
+        <span className="text-2xl opacity-80">
+          <FiClock className="text-2xl opacity-80" />
+        </span>
 
-          {/* Rest of your component remains the same */}
-          <div className="font-bold text-[28px] sm:text-[36px] mt-8">
-            I'm a <TextChange />
-          </div>
-
-          <p className="leading-relaxed mt-4 max-w-3xl mx-auto">
-            Turning coffee into code and ideas into reality—full-stack developer
-            crafting seamless, high-performance web apps that users love to
-            explore!
-          </p>
-
-          {/* Skills Section */}
-          <div className="my-8 w-full px-4">
-            <div className="grid grid-cols-3 md:grid-cols-6 gap-3 max-w-5xl mx-auto">
-              {skills.map((skill, index) => (
-                <div
-                  key={index}
-                  className="flex items-center justify-center border  rounded-lg px-1 sm:px-3 py-2.5 space-x-2 hover:scale-105 transition-colors"
-                >
-                  <skill.icon className="text-2xl md:text-2xl" />
-                  <span className="text-sm font-medium">{skill.name}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-          <div className="mt-20">
-            <Socialicons />
-          </div>
+        <div className="mt-1 leading-tight">
+          <p className="text-base font-semibold"></p>
+          <p className="text-sm opacity-80"> 1+ YoE</p>
         </div>
       </div>
     </div>
   );
-};
 
-export default Hero;
+  return (
+    <section className="min-h-screen flex items-center">
+      <style>{`
+        .char {
+          display: inline-block;
+          color: currentColor; /* Theme adaptive */
+        }
+      `}</style>
+
+      <div className="container mx-auto max-w-6xl p-4 mt-8 sm:p-0 sm:mt-0">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+          {/* LEFT COLUMN */}
+          <div ref={leftRef} className="flex flex-col gap-6">
+            {/* Greeting + Name */}
+            <div className="flex items-center space-x-4">
+              <div>
+                <p className="font-semibold text-lg">Hello, I am</p>
+
+                <span
+                  ref={headingRef}
+                  className="text-[92px] sm:text-9xl md:text-10xl font-semibold leading-tight ml-[-10px] overflow-hidden"
+                  style={{ fontFamily: "Poppins, sans-serif" }}
+                >
+                  {name.map((c, i) => (
+                    <span key={i} className="char">
+                      {c}
+                    </span>
+                  ))}
+                </span>
+
+                <div className="mt-2 text-2xl sm:text-3xl font-bold ">
+                  I'm a <TextChange />
+                </div>
+              </div>
+            </div>
+
+            {/* Description */}
+            <div className="mt-2 max-w-xl">
+              <p
+                className="font-semibold text-lg leading-relaxed md:py-3"
+                dangerouslySetInnerHTML={{
+                  __html:
+                    "Turning coffee into code and ideas into reality — full-stack developer crafting seamless, high-performance web apps that users love to explore!"
+                      .split(" ")
+                      .map(
+                        (word) =>
+                          `<span class='word inline-block opacity-0'>${word}</span>`
+                      )
+                      .join(" "),
+                }}
+              />
+            </div>
+
+            {/* Social Icons */}
+            <div className="flex justify-center sm:justify-start">
+              <Socialicons />
+            </div>
+            <div className="hidden md:flex mt-3">
+              <Badges />
+            </div>
+          </div>
+
+          {/* RIGHT COLUMN */}
+          <div
+            ref={rightRef}
+            className="flex justify-center items-center relative"
+          >
+            <div className="w-full flex justify-center items-center transition-transform hover:-translate-y-4">
+              <ThreeLaptop />
+            </div>
+          </div>
+          <div className="flex md:hidden mt-6 align-center justify-center">
+            <Badges />
+          </div>
+          {/* STATS — mobile below laptop, desktop below left section */}
+        </div>
+      </div>
+    </section>
+  );
+}
