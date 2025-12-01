@@ -1,76 +1,102 @@
+/* index.css - Global + Tailwind + Theme variables
+   Put this file as your global CSS (imported by main entry). */
+
+/* Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Varela+Round&display=swap');
-/* @import url("https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap"); */
+
+/* Tailwind base (keep before your custom rules) */
 @import "tailwindcss";
 
-body {
-  /* background-color: #0c0c0c;
-  color: White; */
-  /* font-family: "Merriweather", serif; */
-  font-family: "Varela Round", sans-serif;
+/* ===========================
+   THEME VARIABLES (global)
+   =========================== */
+
+:root {
+  --bg: #f3f3f6;                 /* soft grey with slight blue tint */
+  --surface: #ffffffcc;          /* translucent acrylic-style */
+  --text-primary: #1c1c1d;       /* deep grey, not black */
+  --text-secondary: #4f4f51;
+  --muted: #7d7d80;
+  --icon-color: #2a2a2c;
+
+  --accent: #0b6cf0;             /* Windows 11 blue */
+  --accent-soft: #0b6cf022;      /* soft glow */
+
+  --theme-meta: #f3f3f6;
 }
 
+html.dark {
+  --bg: #1a1a1c;                 /* rich charcoal */
+  --surface: #242426cc;          /* glass-like dark surface */
+  --text-primary: #e7e7e9;       /* soft white */
+  --text-secondary: #b5b5b8;
+  --muted: #8b8b8e;
+  --icon-color: #e7e7e9;
+
+  --accent: #4c8dff;             /* Win11 dark accent blue */
+  --accent-soft: #4c8dff22;
+
+  --theme-meta: #1a1a1c;
+}
+
+/* Apply global background / text using variables */
+html,
+body {
+  background-color: var(--bg);
+  color: var(--text-primary);
+  font-family: "Varela Round", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Keep p default readable */
 p {
   font-size: 16px;
   font-weight: 500;
-  }
-
-.theme-logo {
-  transition: filter 0.3s ease;
-}
-html.light .theme-logo {
-  filter: invert(1) brightness(1.0);
+  color: var(--text-secondary);
 }
 
+/* headings */
+h2 { font-size: 36px; font-weight: 500; color: var(--text-primary); }
+@media (max-width: 480px) { h2 { font-size: 24px; } }
 
-h2 {
-  font-size: 36px;
-  font-weight: 500;
-}
-@media (max-width: 480px) {
-  h2 {
-    font-size: 24px;/* Even smaller font for mobile screens */
-  }
-}
-h3 {
-  font-size: 28px;   
-}
-@media (max-width: 480px) {
-  h3 {
-    font-size: 24px; /* Even smaller font for mobile screens */
-  }
-}
-h4{
-  font-size: 20px;
-}
+h3 { font-size: 28px; color: var(--text-primary); }
+@media (max-width: 480px) { h3 { font-size: 24px; } }
 
+h4 { font-size: 20px; }
 
-/* global icon color defaults */
-:root {
-  --icon-color: #000; /* light mode default */
-}
+/* logo and icons */
+.theme-logo { transition: filter 0.3s ease; }
 
-/* when .dark exists on an ancestor (your theme toggle), icons become white */
-.dark .social-icons {
-  --icon-color: #fff;
-}
+/* If you want to invert logos in light explicitly */
+html.light .theme-logo { filter: invert(1) brightness(1.0); }
 
-/* SVG icons inside .social-icons use the CSS variable color */
-.social-icons a svg {
-  color: var(--icon-color);
-  transition: color .18s ease, transform .12s ease;
-  will-change: color, transform;
-}
-
-/* hover uses the inline set --hover-color from the <a> */
+/* social icons using CSS variable */
+:root { /* keep default icon color defined above already */ }
+.social-icons { --icon-color: var(--icon-color); display:flex; justify-content:center; gap:1.25rem; }
+.social-icons a svg { color: var(--icon-color); transition: color .18s ease, transform .12s ease; will-change: color, transform; }
 .social-icons a:hover svg,
-.social-icons a:focus svg {
-  color: var(--hover-color);
-  transform: scale(1.08);
+.social-icons a:focus svg { transform: scale(1.08); }
+
+/* card / surfaces */
+.card {
+  background: var(--surface);
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.04);
 }
 
-/* keep anchor spacing/interaction consistent */
-.social-icons {
-  display: flex;
-  justify-content: center;
-  gap: 1.25rem; /* same as space-x-6 */
+/* logo spin (keep from app.css) */
+.logo { height: 6em; padding: 1.5em; will-change: filter; transition: filter 300ms; }
+.logo:hover { filter: drop-shadow(0 0 2em var(--accent)); }
+.logo.react:hover { filter: drop-shadow(0 0 2em #61dafbaa); }
+
+@keyframes logo-spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo { animation: logo-spin infinite 20s linear; }
 }
+
+/* small utilities that follow theme variables */
+.read-the-docs { color: var(--muted); }
+
+/* END OF index.css */

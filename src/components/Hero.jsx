@@ -146,7 +146,7 @@ export default function Hero() {
 
                 <span
                   ref={headingRef}
-                  className="text-[92px] sm:text-9xl md:text-10xl font-semibold leading-tight ml-[-10px] overflow-hidden"
+                  className="text-[92px] sm:text-9xl md:text-10xl font-semibold leading-none ml-[-10px] overflow-hidden"
                   style={{ fontFamily: "Poppins, sans-serif" }}
                 >
                   {name.map((c, i) => (
