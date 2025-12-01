@@ -1,12 +1,60 @@
-# React + Vite
+# 💼 Manish Kumar – Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, clean, and fast personal portfolio built to showcase my work, skills, and projects.  
+Designed with a focus on UI, animations, and performance.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🔗 Live Portfolio  
+👉 https://devmanish.com
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 👨‍💻 About Me  
+Hi, I’m **Dev Manish**, a Frontend Developer currently working at BoomXMedia.  
+I build fast, responsive, and visually appealing interfaces using JavaScript and modern UI tools.  
+I love creating web experiences that look great and feel smooth — from clean landing pages to complex dashboards and full-stack apps.
+
+I enjoy working on:  
+- Real-world MERN applications  
+- Performance-optimized UI  
+- Automation scripts  
+- AI-integrated frontend features  
+- Modern portfolio and product websites  
+
+I’m open to **frontend, fullstack, and AI-powered UI roles**, remote or onsite.
+
+---
+
+## 🛠️ Tech Skills
+
+### **Frontend**
+- React.js  
+- Next.js  
+- JavaScript (ES6+)  
+- Tailwind CSS  
+- HTML / CSS  
+- Framer Motion  
+- UI/UX design practices  
+
+### **Backend**
+- Node.js  
+- Express  
+- MongoDB  
+
+### **Tools & Others**
+- Git & GitHub  
+- Cloudinary  
+- Email templates (HTML/CSS)  
+- Puppeteer automation  
+- SEO basics  
+- Deployment (Vercel / Netlify / Render)
+
+---
+
+## 📌 Note  
+This portfolio is continuously updated as I build new projects and improve my skills.
+
+---
+
+© 2025 Dev Manish
