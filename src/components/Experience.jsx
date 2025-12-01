@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { IoChevronDown } from "react-icons/io5";
-import experienceData from "../data/experience";
+import experienceData from "../data/experienceData";
 
 export default function ExperienceSS1() {
   const [openId, setOpenId] = useState(null);
