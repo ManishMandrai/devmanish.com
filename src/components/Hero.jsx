@@ -12,6 +12,7 @@ import Socialicons from "./Socialicons";
 import TextChange from "./TextChange";
 import ThreeLaptop from "./ThreeLaptop";
 import { FiBriefcase, FiClock } from "react-icons/fi";
+import { DownloadIcon } from "@heroicons/react/outline";
 
 export default function Hero() {
   const headingRef = useRef(null);
@@ -82,14 +83,20 @@ export default function Hero() {
     });
   }, []);
   const Badges = () => (
-    <div className="flex flex-wrap gap-8">
+    <div className="flex flex-wrap gap-4 sm:gap-8 ">
       {/* FREELANCE BADGE */}
       <div
         className="
         flex flex-col items-center justify-center 
-        px-2 py-3
-        w-32
+        px-11 py-4
+        border-1 rounded
         text-center
+          border-[var(--btn-border)]
+        bg-[var(--btn-bg)]
+        backdrop-blur-md
+        text-[var(--text-primary)]
+        shadow-sm hover:shadow-md
+        transition-all
       "
       >
         {/* Icon (theme adaptive) */}
@@ -99,20 +106,23 @@ export default function Hero() {
 
         {/* Text */}
         <div className="mt-1 leading-tight">
-          <p className="text-sm opacity-80">3+ Freelancer</p>
+          <p className="text-sm opacity-80">3+ Dones</p>
         </div>
       </div>
 
       {/* EXPERIENCE BADGE */}
       <div
         className="
-        flex flex-col items-center justify-center 
-        px-4 py-3 
-    
-        w-32
-        text-center
+        flex flex-col items-center justify-center rounded py-4
+        border-1
+        px-10
+        text-center    border-[var(--btn-border)]
+  bg-[var(--btn-bg)]
+  backdrop-blur-md
+  text-[var(--text-primary)]
+  shadow-sm hover:shadow-md
+  transition-all
       "
-
       >
         <span className="text-2xl opacity-80">
           <FiClock className="text-2xl opacity-80" />
@@ -120,14 +130,14 @@ export default function Hero() {
 
         <div className="mt-1 leading-tight">
           <p className="text-base font-semibold"></p>
-          <p className="text-sm opacity-80"> 1+ YoE</p>
+          <p className="text-sm opacity-80">1y Dev Grind</p>
         </div>
       </div>
     </div>
   );
 
   return (
-    <section className="min-h-screen flex items-center">
+    <section className="min-h-screen flex sm:mt-[-40px] items-center">
       <style>{`
         .char {
           display: inline-block;
@@ -165,10 +175,10 @@ export default function Hero() {
             {/* Description */}
             <div className="mt-2 max-w-xl">
               <p
-                className="font-semibold text-lg leading-relaxed md:py-3"
+                className="font-semibold text-lg leading-relaxed "
                 dangerouslySetInnerHTML={{
                   __html:
-                    "Turning coffee into code and ideas into reality — full-stack developer crafting seamless, high-performance web apps that users love to explore!"
+                    "Engineering high-performance applications with clean architecture, strong foundations, and resilience baked into every layer"
                       .split(" ")
                       .map(
                         (word) =>
@@ -178,12 +188,31 @@ export default function Hero() {
                 }}
               />
             </div>
+            <div className="pt-2">
+              <a
+                href="/Manish_Kumar_Resume.pdf"
+                download
+                className="
+                    px-6 py-3 text-xl font-bold max-w-[180px] rounded flex items-center gap-3
+                    border transition-all
+                    bg-[var(--btn-bg)]
+                    border-[var(--btn-border)]
+                    text-[var(--text-primary)]
+                    shadow-sm hover:shadow-md 
+                    hover:bg-[var(--surface)]
+                    active:scale-95
+                      "
+              >
+                Resume
+                <DownloadIcon className="h-8 w-8 text-[var(--accent)]" />
+              </a>
+            </div>
 
             {/* Social Icons */}
             <div className="flex justify-center sm:justify-start">
               <Socialicons />
             </div>
-            <div className="hidden md:flex mt-3">
+            <div className="hidden md:flex mt-3 ">
               <Badges />
             </div>
           </div>

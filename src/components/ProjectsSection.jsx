@@ -16,23 +16,30 @@ export default function ProjectsSection() {
   }, [active]);
 
   return (
-    <section className="py-16">
-      <div className="max-w-7xl mx-auto px-6">
+    <section className="py-16 ">
+      <div className="max-w-6xl mx-auto p-4 sm:p-0 ">
         {/* Tabs */}
-        <div className="flex items-center gap-1 mb-8 flex-wrap">
-          {TABS.map((t) => {
+        <div className="flex items-center  w-full gap-3 mb-8 flex-wrap">
+          {TABS.map((t, i) => {
             const isActive = t === active;
+            const isLast = i === TABS.length - 1;
+
             return (
-              <button
-                key={t}
-                className={`relative px-1 md:py-2 transition
-        ${isActive ? "text-blue-600" : "text-neutral-700"}
-        after:content-['|'] last:after:content-[''] after:mx-2 after:text-black
-    `}
-                onClick={() => setActive(t)}
-              >
-                {t}
-              </button>
+              <div key={t} className="flex items-center gap-3">
+                <button
+                  className={`relative px-1 md:py-2 transition text-xl uppercase
+            ${isActive ? "text-blue-600" : ""}
+          `}
+                  onClick={() => setActive(t)}
+                >
+                  {t}
+                </button>
+
+                {/* Separator */}
+                {!isLast && (
+                  <span className="text-neutral-400 text-xl font-light">|</span>
+                )}
+              </div>
             );
           })}
         </div>
@@ -47,7 +54,7 @@ export default function ProjectsSection() {
               exit={{ opacity: 0 }}
               transition={{ duration: 0.35 }}
             >
-              <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-3">
                 {filtered.map((p) => (
                   <motion.div
                     layout
@@ -59,10 +66,10 @@ export default function ProjectsSection() {
                   >
                     <div
                       onClick={() => setSelected(p)}
-                      className="cursor-pointer rounded-lg overflow-hidden bg-white shadow-sm hover:shadow-md transition-shadow"
+                      className="cursor-pointer rounded border-b overflow-hidden  shadow-sm hover:shadow-md transition-shadow"
                     >
                       {/* thumbnail: prefer first image if available, else fallback to black */}
-                      <div className="w-full h-48 bg-gray-100 relative overflow-hidden group">
+                      <div className="w-full h-48  relative overflow-hidden group">
                         {p.media?.[0]?.type === "image" ? (
                           <img
                             src={p.media[0].url}

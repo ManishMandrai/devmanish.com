@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import manish from "../assets/logodrk.png";
+// import manish from "../assets/logodrk.png";
 import { FaInstagram, FaLinkedinIn, FaGithub } from "react-icons/fa";
 import { CiLinkedin } from "react-icons/ci";
 import { Link } from "react-router-dom";
@@ -8,20 +8,28 @@ import Testimonials from "../pages/Testimonials";
 import HireMe from "../pages/HireMe";
 import { FaXTwitter } from "react-icons/fa6";
 
+import LogoDark from "../assets/logob.png"; // dark mode logo
+import LogoLight from "../assets/logow.png"; // light mode logo
+import useTheme from "../hooks/useTheme";
+
+
+
 const Footer = () => {
   const [currentYear, setCurrentYear] = useState(new Date().getFullYear());
   const [location, setLocation] = useState("23.268614, 77.475184");
-
+  const { theme, setTheme } = useTheme();
   return (
     <footer className="border-t pt-10 pb-2">
       <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
         {/* Logo Section */}
         <div className="flex flex-col items-center lg:items-start space-y-4">
-          <img
-            src={manish}
-            alt="Logo"
-            className="w-48 hover:scale-105 transition-transform"
-          />
+          <div to="/" className="flex items-center">
+            <img
+              src={theme === "dark" ? LogoDark : LogoLight}
+              alt="MANISH"
+              className="w-52 transition-transform"
+            />
+          </div>
 
           <div className="flex space-x-4">
             <a

@@ -21,8 +21,10 @@
 
   --accent: #0b6cf0;             /* Windows 11 blue */
   --accent-soft: #0b6cf022;      /* soft glow */
-
+ --btn-bg: #ffffffdd;        /* a bit brighter than surface */
+  --btn-border: #000000;
   --theme-meta: #f3f3f6;
+  
 }
 
 html.dark {
@@ -35,6 +37,8 @@ html.dark {
 
   --accent: #4c8dff;             /* Win11 dark accent blue */
   --accent-soft: #4c8dff22;
+    --btn-bg: #2a2a2ddd;        /* brighter than dark surface */
+  --btn-border: #ffffff;
 
   --theme-meta: #1a1a1c;
 }
@@ -99,4 +103,25 @@ html.light .theme-logo { filter: invert(1) brightness(1.0); }
 /* small utilities that follow theme variables */
 .read-the-docs { color: var(--muted); }
 
+
+
+
+/* Center fade animation */
+@keyframes navOpen {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-nav {
+  animation: navOpen 0.25s ease-out forwards;
+}
+
+
 /* END OF index.css */
+

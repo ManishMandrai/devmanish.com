@@ -1,155 +1,133 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
-import Logo from "../assets/logodrk.png";
-import { MenuIcon, XIcon } from "@heroicons/react/outline";
-import { CiLinkedin } from "react-icons/ci";
-import { FaInstagram } from "react-icons/fa";
-import { SiLeetcode, SiGeeksforgeeks } from "react-icons/si";
-import { FaGithub } from "react-icons/fa";
-import Socialicons from "./Socialicons";
-import { SunIcon, MoonIcon } from "@heroicons/react/outline";
-import useTheme from "../hooks/useTheme";
+import { MenuIcon, XIcon, SunIcon, MoonIcon } from "@heroicons/react/outline";
 
-import LogoDark from "../assets/logodrk.png";   // dark mode logo
-import LogoLight from "../assets/logolgt.png";  // light mode logo
+import useTheme from "../hooks/useTheme";
+import LogoDark from "../assets/logow.png";
+import LogoLight from "../assets/logob.png";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { theme, setTheme } = useTheme();
 
-
   return (
-    <nav className=" w-full z-50 border-b py-1 md:bg-transparent b">
-      <div className="max-w-7xl mx-auto px-2 sm:px-8 lg:px-0">
+    <nav className="w-full z-50 border-b py-2 md:bg-transparent">
+      <div className="max-w-7xl mx-auto px-4 sm:px-14">
         <div className="flex justify-between items-center h-16">
+
           {/* Logo */}
-         <NavLink to="/" className="flex items-center">
-  <img
-    src={theme === "dark" ? LogoDark : LogoLight}
-    alt="MANISH"
-    className="w-52 p-[13.4px] transition-transform"
-  />
-</NavLink>
+          <NavLink to="/" className="flex items-center">
+            <img
+              src={theme === "dark" ? LogoDark : LogoLight}
+              alt="MANISH"
+              className="w-40 transition-all"
+            />
+          </NavLink>
 
+          {/* Desktop Nav */}
+          <div className="hidden md:flex items-center gap-6">
+            <NavLink to="/about" className="hover:opacity-70 transition">About</NavLink>
+            <NavLink to="/testimonials" className="hover:opacity-70 transition">Testimonials</NavLink>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-4">
-            <NavLink
-              to="/about"
-              className=" px-3 py-2 rounded-md text-sm  font-medium transition-all hover:scale-105"
-            >
-              About
-            </NavLink>
-            <NavLink
-              to="/testimonials"
-              className="px-3 py-2 rounded-md text-sm font-medium transition-all hover:scale-105"
-            >
-              Testimonials
-            </NavLink>
             <NavLink
               to="/hireme"
-              className=" px-6 py-2 bg-[#e50914] text-white text-sm font-semibold rounded-lg "
+              className="px-6 py-2 bg-[#e50914] text-white text-sm font-semibold rounded-lg"
             >
               Hire Me
             </NavLink>
+
+            {/* Theme Switch - Desktop */}
             <button
               onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-              className="p-2 rounded-full  transition hover:scale-110"
+              className="p-2 rounded-full hover:scale-110 transition"
             >
               {theme === "dark" ? (
                 <SunIcon className="h-6 w-6 text-yellow-400" />
               ) : (
-                <MoonIcon className="h-6 w-6 text-gray-700" />
+                <MoonIcon className="h-6 w-6" />
               )}
             </button>
-
           </div>
 
-
-
-          {/* Mobile Menu Button */}
-          <div className="md:hidden flex items-center">
-            <button
-              onClick={() => setIsOpen(!isOpen)}
-              className="inline-flex items-center justify-center ml-28 rounded-md focus:outline-none"
+          {/* Right side for mobile - Floating pill */}
+          <div className="md:hidden">
+            <div
+              className="
+                flex items-center gap-4 
+                px-4 py-2 rounded-full
+                bg-white/20 dark:bg-black/20 
+                backdrop-blur-md 
+                shadow-lg border border-white/10
+              "
             >
-              {isOpen ? (
-                <XIcon className="h-8 w-8" aria-hidden="true" />
-              ) : (
-                <MenuIcon className="h-8 w-8" aria-hidden="true" />
-              )}
-            </button>
+              <button
+                onClick={() => setIsOpen(!isOpen)}
+                className="transition active:scale-90"
+              >
+                {isOpen ? (
+                  <XIcon className="h-7 w-7" />
+                ) : (
+                  <MenuIcon className="h-7 w-7" />
+                )}
+              </button>
 
-
-
+              <button
+                onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+                className="transition active:scale-90"
+              >
+                {theme === "dark" ? (
+                  <SunIcon className="h-7 w-7 text-yellow-400" />
+                ) : (
+                  <MoonIcon className="h-7 w-7" />
+                )}
+              </button>
+            </div>
           </div>
-          <button
-            onClick={() => {
-              setTheme(theme === "dark" ? "light" : "dark");
-              setIsOpen(false);
-              
-            }}
-            className="transition md:hidden "
-          >
-            {theme === "dark" ? (
-              <SunIcon className="h-7 w-7 text-yellow-400" />
-            ) : (
-              <MoonIcon className="h-7 w-7 " />
-            )}
-          </button>
         </div>
-
-
       </div>
-
 
       {/* Mobile Menu */}
+      {isOpen && (
+        <div className="fixed inset-0 z-40 md:hidden">
+          <div
+            className="absolute inset-0 backdrop-blur bg-black/30"
+            onClick={() => setIsOpen(false)}
+          />
 
-      <div
-        className={`md:hidden fixed inset-0 z-40 transform ${isOpen ? "translate-x-0" : "-translate-x-full"
-          } transition-transform duration-300 ease-in-out`}
-      >
-        <div className="fixed inset-0 " onClick={() => setIsOpen(false)} />
+          <div
+            className="
+              absolute left-1/2 top-1/2 
+              -translate-x-1/2 -translate-y-1/2
+              w-[70%] max-w-[320px]
+              rounded-2xl p-6 py-24 
+              shadow-2xl border border-white/10
+        
+            "
+          >
+            <div className="flex flex-col space-y-4 text-center text-lg">
+              <NavLink to="/about" onClick={() => setIsOpen(false)}>
+                About
+              </NavLink>
 
-        <div className="relative w-4/5 max-w-[85%]  h-full ">
-          <div className=" border-b border-white/20">
-            <NavLink to="/" className="flex items-center">
-              <img
-                src={Logo}
-                alt="MANISH"
-                className="w-52 p-[13.4px] transition-transform h"
-              />
-            </NavLink>
-          </div>
-          <div className="flex flex-col p-4 space-y-4">
-            <NavLink
-              to="/about"
-              className=" px-3 py-2 rounded-md   font-medium transition-all"
-              onClick={() => setIsOpen(false)}
-            >
-              About
-            </NavLink>
-            <NavLink
-              to="/testimonials"
-              className="px-3 py-2 rounded-md font-medium transition-all"
-              onClick={() => setIsOpen(false)}
-            >
-              Testimonials
-            </NavLink>
-            <NavLink
-              to="/HireMe"
-              className=" px-6 py-2 bg-[#e50914] text-center max-w-[160px]  text-sm font-semibold rounded-lg "
-              onClick={() => setIsOpen(false)}
-            >
-              Hire Me
-            </NavLink>
-          </div>
-          <div className="mt-75">
-            <Socialicons />
+              <NavLink to="/testimonials" onClick={() => setIsOpen(false)}>
+                Testimonials
+              </NavLink>
+
+              <NavLink
+                to="/hireme"
+                onClick={() => setIsOpen(false)}
+                className="px-6 py-2 bg-[#e50914] text-white rounded-lg font-semibold mx-auto"
+              >
+                Hire Me
+              </NavLink>
+            </div>
+
+            <div className="mt-6 flex justify-center">
+              {/* Add social icons if needed */}
+            </div>
           </div>
         </div>
-
-      </div>
+      )}
     </nav>
   );
 };
