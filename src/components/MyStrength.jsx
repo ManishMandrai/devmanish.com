@@ -1,81 +1,139 @@
 // MyStrength.jsx
-import React, { useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import {
-  SiTailwindcss,
-  SiFigma,
-  SiNotion,
-  SiMarkdown,
+  SiJavascript,
+  SiTypescript,
+  SiHtml5,
+  SiCss3,
+  SiReact,
   SiNextdotjs,
+  SiTailwindcss,
+  SiGreensock,
+  SiNodedotjs,
+  SiExpress,
+  SiMongodb,
   SiPrisma,
-  SiSupabase,
-  SiGnubash,
-  SiGhost,
+  SiPostgresql,
+  SiFirebase,
+  SiVercel,
+  SiGit,
   SiGithub,
-  SiDocker,
-  SiPython,
-  //   SiAmazonaws,
-  SiCloudflare,
+  SiPostman,
+  SiCloudinary,
+  SiHostinger,
+  SiStreamlit,
+  SiCplusplus
 } from "react-icons/si";
+import { FiCopy } from "react-icons/fi";
+
 import { FaLaptopCode, FaServer, FaHandshake, FaBolt } from "react-icons/fa";
-import useGitHubStats from "../hooks/useGitHubStats";
 
 export default function MyStrength() {
-
   // refs for the 3 marquee rows
   const r1 = useRef(null);
   const r2 = useRef(null);
   const r3 = useRef(null);
+  const timelinesRef = useRef([]);
 
   // skill lists with icons + brand colors
-  // Row 1
+  // --- Row 1 (Frontend Core) ---
   const skillsRow1 = [
-    { label: "Tailwind CSS", Icon: SiTailwindcss, color: "#06B6D4" },
-    { label: "Figma", Icon: SiFigma, color: "#F24E1E" },
-    { label: "Notion", Icon: SiNotion, color: "#000000" },
-    { label: "Markdown", Icon: SiMarkdown, color: "#000000" },
+    { label: "JavaScript", Icon: SiJavascript, color: "#F7DF1E" },
+    { label: "TypeScript", Icon: SiTypescript, color: "#3178C6" },
+    { label: "HTML5", Icon: SiHtml5, color: "#E34F26" },
+    { label: "CSS3", Icon: SiCss3, color: "#1572B6" },
+    { label: "React.js", Icon: SiReact, color: "#61DAFB" },
     { label: "Next.js", Icon: SiNextdotjs, color: "#000000" },
+    { label: "Tailwind", Icon: SiTailwindcss, color: "#06B6D4" },
+    { label: "GSAP", Icon: SiGreensock, color: "#88CE02" },
   ];
 
-  // Row 2
+  // --- Row 2 (Backend + DB) ---
   const skillsRow2 = [
+    { label: "Node.js", Icon: SiNodedotjs, color: "#339933" },
+    { label: "Express.js", Icon: SiExpress, color: "#000000" },
+    { label: "MongoDB", Icon: SiMongodb, color: "#47A248" },
     { label: "Prisma", Icon: SiPrisma, color: "#6CC0FF" },
-    { label: "Supabase", Icon: SiSupabase, color: "#3ECF8E" },
-    { label: "Cloudflare", Icon: SiCloudflare, color: "#F38020" },
+    { label: "Neon", Icon: SiPostgresql, color: "#336791" },
+    { label: "Firebase", Icon: SiFirebase, color: "#FFCA28" },
+    { label: "Convex", Icon: SiVercel, color: "#000000" }, // closest icon
+    { label: "JWT", Icon: FaServer, color: "#4A90E2" },
   ];
 
-  // Row 3
+  // --- Row 3 (Dev Tools, Hosting & Others) ---
   const skillsRow3 = [
-    { label: "Bash", Icon: SiGnubash, color: "#4EAA25" },
-    { label: "Ghost", Icon: SiGhost, color: "#000000" },
+    { label: "Git", Icon: SiGit, color: "#F05032" },
     { label: "GitHub", Icon: SiGithub, color: "#181717" },
-    { label: "Docker", Icon: SiDocker, color: "#2496ED" },
-    { label: "Python", Icon: SiPython, color: "#3776AB" },
+    { label: "Postman", Icon: SiPostman, color: "#FF6C37" },
+    { label: "Cloudinary", Icon: SiCloudinary, color: "#3448C5" },
+    { label: "Vercel", Icon: SiVercel, color: "#000000" },
+    { label: "Hostinger", Icon: SiHostinger, color: "#6747FF" },
+    { label: "Stream", Icon: SiStreamlit, color: "#FF4B4B" }, // closest icon
+    { label: "C++", Icon: SiCplusplus, color: "#00599C" },
   ];
+const [copied, setCopied] = useState(false);
+
+const handleCopy = () => {
+  const email = "manishkumarmandrai@gmail.com";
+  navigator.clipboard.writeText(email);
+
+  setCopied(true);
+  setTimeout(() => setCopied(false), 1200);
+};
+
+
   const animateRow = (ref, direction = "ltr", speed = 40) => {
     const el = ref.current;
     if (!el) return;
 
-    const totalWidth = el.scrollWidth / 2; // width of one copy
-
+    // Clear any existing animations
     gsap.killTweensOf(el);
 
-    gsap.to(el, {
-      x: direction === "ltr" ? -totalWidth : totalWidth,
+    // Get the total width of one set of items
+    const firstChild = el.firstElementChild;
+    const totalWidth = firstChild ? firstChild.offsetWidth : 0;
+
+    // Set initial position based on direction
+    const startX = direction === "ltr" ? 0 : -totalWidth;
+    const endX = direction === "ltr" ? -totalWidth : 0;
+
+    // Set initial position
+    gsap.set(el, { x: startX });
+
+    // Create the animation with seamless infinite loop
+    const tl = gsap.timeline({ repeat: -1 });
+
+    // Animate to end position
+    tl.to(el, {
+      x: endX,
       duration: speed,
       ease: "none",
-      repeat: -1,
-      onRepeat: () => {
-        gsap.set(el, { x: 0 }); // reset CLEANLY each loop
-      },
+      // When the animation repeats, it will seamlessly continue
+      // because we're not resetting the position
     });
+
+    // Store timeline for cleanup
+    timelinesRef.current.push(tl);
   };
+
   useEffect(() => {
-    animateRow(r1, "ltr", 22); // Row 1 → Left to Right
-    animateRow(r2, "rtl", 28); // Row 2 → Right to Left
-    animateRow(r3, "ltr", 24); // Row 3 → Left to Right
+    // Start animations after a brief delay to ensure DOM is ready
+    const timeoutId = setTimeout(() => {
+      // Clear any existing timelines
+      timelinesRef.current.forEach(tl => tl.kill());
+      timelinesRef.current = [];
+
+      // Animate rows with correct directions
+      animateRow(r1, "ltr", 22); // Row 1 → Left to Right
+      animateRow(r2, "rtl", 28); // Row 2 → Right to Left
+      animateRow(r3, "ltr", 24); // Row 3 → Left to Right
+    }, 100);
 
     return () => {
+      clearTimeout(timeoutId);
+      // Kill all animations on cleanup
+      timelinesRef.current.forEach(tl => tl.kill());
       gsap.killTweensOf([r1.current, r2.current, r3.current]);
     };
   }, []);
@@ -85,7 +143,7 @@ export default function MyStrength() {
     const { Icon, label, color } = item;
     return (
       <div
-        className="inline-flex items-center gap-3 px-4 py-2 rounded-lg border text-sm font-medium whitespace-nowrap"
+        className="inline-flex items-center gap-3 px-4 py-2 rounded-lg border text-[12px] font-thin whitespace-nowrap"
         style={{
           borderColor: "currentColor",
           background: "rgba(255,255,255,0.02)",
@@ -97,7 +155,7 @@ export default function MyStrength() {
     );
   };
 
-  // Duplicate helper: render 2 copies to allow continuous motion
+  // Duplicate helper: render 3 copies for better seamless looping
   const DuplicateRow = ({ items, innerRef }) => (
     <div className="overflow-hidden w-full py-2">
       <div
@@ -105,32 +163,22 @@ export default function MyStrength() {
         className="flex gap-4 items-center"
         style={{ width: "max-content" }}
       >
-        {/* first copy */}
-        <div className="flex gap-4">
-          {items.map((it, i) => (
-            <SkillPill key={`a-${i}-${it.label}`} item={it} />
-          ))}
-        </div>
-
-        {/* second copy (duplicate) */}
-        <div className="flex gap-4">
-          {items.map((it, i) => (
-            <SkillPill key={`b-${i}-${it.label}`} item={it} />
-          ))}
-        </div>
+        {/* Render 3 copies for smoother continuous motion */}
+        {[...Array(3)].map((_, copyIndex) => (
+          <div key={copyIndex} className="flex gap-4">
+            {items.map((it, i) => (
+              <SkillPill key={`${copyIndex}-${i}-${it.label}`} item={it} />
+            ))}
+          </div>
+        ))}
       </div>
     </div>
   );
 
-  
-
+  // The rest of your component remains the same...
   return (
-    <section className="w-full px-4 py-12">
+    <section className="w-full ">
       <div className="max-w-6xl mx-auto">
-        <h2 className="text-2xl sm:text-3xl font-semibold mb-10 opacity-90">
-  My Engineering Strengths
-</h2>
-
         {/* grid with items-stretch so both columns have equal height (right side determines height) */}
         <div className="grid grid-cols-1 md:grid-cols-[0.43fr_0.57fr] gap-4 items-stretch">
           {/* LEFT: Skill box (same total height as right) */}
@@ -148,14 +196,11 @@ export default function MyStrength() {
               <DuplicateRow items={skillsRow2} innerRef={r2} />
               <DuplicateRow items={skillsRow3} innerRef={r3} />
             </div>
-
-            {/* intentionally leave bottom area empty (per your request) */}
-            <div className="mt-20 flex justify-center">
+            <div className="mt-4 flex justify-center">
               <img
                 src="https://github-readme-streak-stats.herokuapp.com/?user=ManishMandrai&theme=transparent&hide_border=true"
                 alt="GitHub Streak"
                 className="shadow-lg shadow-black/20 dark:shadow-white/5 rounded-lg"
-                // className="w-full max-w-lg"
               />
             </div>
 
@@ -167,6 +212,35 @@ export default function MyStrength() {
                   "radial-gradient(circle, currentColor, transparent)",
               }}
             />
+            <div className="mt-10 flex flex-col items-center gap-3 relative">
+              {/* small toast */}
+              {copied && (
+                <div className="absolute -top-10 px-3 py-1 text-xs rounded-lg 
+      bg-green-600 text-white shadow-md animate-fade-in">
+                  Email copied!
+                </div>
+              )}
+
+              {/* status line */}
+              <div className="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400">
+                <span className="h-2 w-2 rounded-full bg-green-500 animate-pulse shadow-[0_0_10px_3px_rgba(34,197,94,0.7)]"></span>
+                <span className="tracking-tight">Available for exciting collaborations</span>
+              </div>
+
+              {/* copy button */}
+              <button
+                onClick={handleCopy}
+                className="px-4 py-2 rounded-xl border border-black/10 dark:border-white/10
+      bg-white/60 dark:bg-white/50 backdrop-blur-md flex items-center gap-2
+      text-sm text-[#777] dark:text-gray-100 shadow-sm
+      hover:shadow-[0_0_12px_rgba(99,102,241,0.4)]
+      transition-all duration-300 active:scale-95"
+              >
+                Say Hello <FiCopy className="text-lg" />
+              </button>
+            </div>
+
+
           </div>
 
           {/* RIGHT: stacked cards (their total height will determine the grid row height) */}
