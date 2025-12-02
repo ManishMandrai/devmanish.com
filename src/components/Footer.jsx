@@ -2,35 +2,36 @@ import React, { useState } from "react";
 // import manish from "../assets/logodrk.png";
 import { FaInstagram, FaLinkedinIn, FaGithub } from "react-icons/fa";
 import { CiLinkedin } from "react-icons/ci";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import About from "../pages/About";
 import Testimonials from "../pages/Testimonials";
 import HireMe from "../pages/HireMe";
 import { FaXTwitter } from "react-icons/fa6";
-
-import LogoDark from "../assets/logob.png"; // dark mode logo
-import LogoLight from "../assets/logow.png"; // light mode logo
+import LogoDark from "../assets/logow.png";
+import LogoLight from "../assets/logob.png";
 import useTheme from "../hooks/useTheme";
-
-
 
 const Footer = () => {
   const [currentYear, setCurrentYear] = useState(new Date().getFullYear());
   const [location, setLocation] = useState("23.268614, 77.475184");
   const { theme, setTheme } = useTheme();
+
+  
   return (
     <footer className="border-t pt-10 pb-2">
-      <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+      <div className="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
         {/* Logo Section */}
         <div className="flex flex-col items-center lg:items-start space-y-4">
-          <div to="/" className="flex items-center">
-            <img
-              src={theme === "dark" ? LogoDark : LogoLight}
-              alt="MANISH"
-              className="w-52 transition-transform"
-            />
-          </div>
-
+         <div className="flex flex-col items-center lg:items-start space-y-4">
+  <NavLink to="/" className="flex items-center">
+    <img
+      src={theme === "dark" ? LogoDark : LogoLight}
+      alt="MANISH"
+      className="w-52 transition-transform"
+    />
+  </NavLink>
+</div>
+       
           <div className="flex space-x-4">
             <a
               target="_blank"
@@ -78,7 +79,12 @@ const Footer = () => {
         <div className="flex flex-col items-center lg:items-end space-y-4">
           <div className="w-28 h-[2px] sm:hidden bg-black"></div>
           <button
-            className="text-sm px-4 py-2 rounded-full border-2 border-[#ffffff] hover:bg-[#000000] transition duration-200"
+            className="text-sm px-4 py-2 rounded border-2 border-[var(--btn-border)]
+  bg-[var(--btn-bg)]
+  backdrop-blur-md
+  text-[var(--text-primary)]
+  shadow-sm hover:shadow-md
+ transition duration-200"
             onMouseOver={() => setLocation("Bhopal (INDIA)")}
             onMouseOut={() => setLocation("23°16'07.0\"N 77°28'31.0\"E")}
             style={{
@@ -92,7 +98,7 @@ const Footer = () => {
       </div>
 
       {/* Footer Bottom Section */}
-      <div className="mt-8 border-t border-gray-700 pt-4 pb-0 mb-0 text-center text-gray-400">
+      <div className="mt-8 border-t border-gray-700 pt-4 pb-0 mb-0 text-center">
         <div className="text-[12px]">
           © {currentYear} Manish Kumar. All Rights Reserved.
         </div>

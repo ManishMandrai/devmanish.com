@@ -54,7 +54,7 @@ export default function ProjectsSection() {
               exit={{ opacity: 0 }}
               transition={{ duration: 0.35 }}
             >
-              <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+              <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-8">
                 {filtered.map((p) => (
                   <motion.div
                     layout
@@ -66,7 +66,11 @@ export default function ProjectsSection() {
                   >
                     <div
                       onClick={() => setSelected(p)}
-                      className="cursor-pointer rounded border-b overflow-hidden  shadow-sm hover:shadow-md transition-shadow"
+                      className="cursor-pointer rounded  overflow-hidden  shadow-sm hover:shadow-md transition-shadow  
+  bg-[var(--btn-bg)]
+  backdrop-blur-md
+  text-[var(--text-primary)]
+  "
                     >
                       {/* thumbnail: prefer first image if available, else fallback to black */}
                       <div className="w-full h-48  relative overflow-hidden group">
@@ -91,7 +95,7 @@ export default function ProjectsSection() {
                         <div className="absolute inset-0 bg-gradient-to-t from-black/35 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
                       </div>
 
-                      <div className="p-4">
+                      <div className="p-4 border-t ">
                         <h5 className="font-semibold">{p.title}</h5>
                       </div>
                     </div>

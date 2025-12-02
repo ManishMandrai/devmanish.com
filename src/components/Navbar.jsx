@@ -11,9 +11,9 @@ const Navbar = () => {
   const { theme, setTheme } = useTheme();
 
   return (
-    <nav className="w-full z-50 border-b py-2 md:bg-transparent">
-      <div className="max-w-7xl mx-auto px-4 sm:px-14">
-        <div className="flex justify-between items-center h-16">
+    <nav className="w-full z-50 border-b py-2 fixed md:bg-transparent">
+      <div className="max-w-7xl mx-auto px-3 sm:px-15">
+        <div className="flex justify-between items-center h-10">
 
           {/* Logo */}
           <NavLink to="/" className="flex items-center">

@@ -1,13 +1,9 @@
 import React, { useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
-import { FaInstagram, FaTwitter } from "react-icons/fa";
-import { FaXTwitter } from "react-icons/fa6";
-import { CiLinkedin } from "react-icons/ci";
-
 
 const Contact = () => {
-  const form = useRef();
-  const [messageSent, setMessageSent] = useState(false);
+  const formRef = useRef();
+  const [sent, setSent] = useState(false);
 
   const sendEmail = (e) => {
     e.preventDefault();
@@ -16,86 +12,124 @@ const Contact = () => {
       .sendForm(
         import.meta.env.VITE_SERVICE_ID,
         import.meta.env.VITE_TEMPLATE_ID,
-        form.current,
-        {
-          publicKey: import.meta.env.VITE_PUBLIC_KEY,
-        }
+        formRef.current,
+        { publicKey: import.meta.env.VITE_PUBLIC_KEY }
       )
-      .then(
-        () => {
-          setMessageSent(true);
-          form.current.reset(); // Reset form fields after sending
-          setTimeout(() => setMessageSent(false), 3000); // Hide success message after 3 sec
-        },
-        (error) => {
-          console.log("FAILED...", error.text);
-        }
-      );
+      .then(() => {
+        setSent(true);
+        formRef.current.reset();
+        setTimeout(() => setSent(false), 3000);
+      });
   };
 
   return (
-    <div className=" px-4 my-10 max-w-screen-md mx-auto">
-      {/* Header Section */}
-      <h2 className="font-bold sm:text-center mb-12">Shoot me a message</h2>
+    <section className="max-w-3xl mx-auto px-4 py-16">
+      {/* Heading */}
+      <h2 className="text-3xl font-bold mb-3 text-left">
+        Let’s build something great together
+      </h2>
+      <p className="text-left text-[var(--text-primary)] opacity-70 mb-8 leading-relaxed max-w-lg">
+        Whether you have a project idea, want to collaborate, or simply want to
+        say hello — drop a message. I read everything.
+      </p>
 
-      {/* Form Section */}
-      <div className="p-2rounded-lg">
-        <form className="space-y-6" ref={form} onSubmit={sendEmail}>
-          {/* Name and Email Fields */}
-          <div className="flex flex-col sm:flex-row gap-4">
-            <div className="w-full">
-              <input
-                name="to_name"
-                type="text"
-                placeholder="Enter your name"
-                className="w-full p-3 bg-transparent  border-0 border-b-2  focus:outline-none focus:ring-0 placeholder-gray-400"
-                required
-              />
-            </div>
-            <div className="w-full">
-              <input
-                name="your_Email"
-                type="email"
-                placeholder="Enter your email address"
-                className="w-full p-3 bg-transparent  border-0 border-b-2  focus:outline-none focus:ring-0 placeholder-gray-400"
-                required
-              />
-            </div>
-          </div>
+      {/* Form */}
+      <form ref={formRef} onSubmit={sendEmail} className="space-y-6">
+        {/* Name + Email */}
+        <div className="grid sm:grid-cols-2 gap-6">
+          <input
+            type="text"
+            name="to_name"
+            placeholder="Your full name"
+            className="
+              w-full p-4 rounded-lg
+              border border-[var(--btn-border)]
+              bg-[var(--btn-bg)] backdrop-blur-md
+              text-[var(--text-primary)]
+              shadow-sm hover:shadow-md
+              transition-all duration-200
+              focus:outline-none focus:ring-0
+              placeholder-gray-400
+            "
+            required
+          />
 
-          {/* Message Field */}
-          <div>
-            <textarea
-              name="message"
-              rows="3"
-              placeholder="Execute message();"
-              className="w-full p-3 bg-transparent  border-0 border-b-2  focus:outline-none focus:ring-0 placeholder-gray-400"
-              required
-            ></textarea>
-          </div>
+          <input
+            type="email"
+            name="your_Email"
+            placeholder="you@example.com"
+            className="
+              w-full p-4 rounded
+              border border-[var(--btn-border)]
+              bg-[var(--btn-bg)] backdrop-blur-md
+              text-[var(--text-primary)]
+              shadow-sm hover:shadow-md
+              transition-all duration-200
+              focus:outline-none focus:ring-0
+              placeholder-gray-400
+            "
+            required
+          />
+        </div>
 
-          {/* Success Message */}
-          {messageSent && (
-            <p className="text-green-400 text-center">
-              Message sent successfully! 🎉
-            </p>
-          )}
+        {/* Subject */}
+        <input
+          type="text"
+          name="subject"
+          placeholder="What’s this message about?"
+          className="
+            w-full p-4 rounded
+            border border-[var(--btn-border)]
+            bg-[var(--btn-bg)] backdrop-blur-md
+            text-[var(--text-primary)]
+            shadow-sm hover:shadow-md
+            transition-all duration-200
+            focus:outline-none focus:ring-0
+            placeholder-gray-400
+          "
+        />
 
-          {/* Submit Button */}
-          <div className="text-center pb-4">
-            <button
-              type="submit"
-              className="px-10 py-3  bg-[#e50914] text-white font-semibold rounded-lg shadow-md transition-all duration-200"
-            >
-              Shoot →
-            </button>
-          </div>
-        </form>
-      </div>
+        {/* Message */}
+        <textarea
+          name="message"
+          rows="4"
+          placeholder="Write your message here..."
+          className="
+            w-full p-4 rounded
+            border border-[var(--btn-border)]
+            bg-[var(--btn-bg)] backdrop-blur-md
+            text-[var(--text-primary)]
+            shadow-sm hover:shadow-md
+            transition-all duration-200
+            focus:outline-none focus:ring-0
+            placeholder-gray-400
+          "
+          required
+        ></textarea>
 
-      {/* Social Media Icons */}
+        {/* Success */}
+        {sent && (
+          <p className="text-green-400 text-sm text-left font-medium">
+            Your message has been delivered successfully! 🚀
+          </p>
+        )}
 
-    </div>
+        <div className="flex justify-end">
+          {/* Button */}
+          <button
+            type="submit"
+            className="
+            px-16 py-3 rounded cursor-pointer
+            bg-[#e50914] text-white font-semibold
+            shadow-md hover:shadow-lg
+            transition-all duration-200
+            "
+          >
+            Send Message →
+          </button>
+        </div>
+      </form>
+    </section>
   );
 };
 

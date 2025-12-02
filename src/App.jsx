@@ -15,6 +15,7 @@ import ScrollToTop from "./components/ScrollToTop";
 
 function App() {
   return (
+    
     <div className="min-h-screen flex flex-col">
       {/* <SparkleBackground /> */}
       {/* Navbar at the top */}

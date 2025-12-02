@@ -137,7 +137,7 @@ export default function Hero() {
   );
 
   return (
-    <section className="min-h-screen flex sm:mt-[-40px] items-center">
+    <section className="min-h-screen flex items-center">
       <style>{`
         .char {
           display: inline-block;

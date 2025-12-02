@@ -3,13 +3,14 @@ import React from "react";
 import { motion } from "framer-motion";
 import MediaCarousel from "./MediaCarousel";
 import { IoClose } from "react-icons/io5";
+import { Github, Link2 } from "lucide-react";
+import { FaExternalLinkAlt, FaGithub, FaLink } from "react-icons/fa";
 
 export default function ProjectModal({ project, onClose }) {
   if (!project) return null;
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center px-4">
-      
       {/* BACKDROP */}
       <motion.div
         className="absolute inset-0 bg-black/40 backdrop-blur-sm"
@@ -23,16 +24,20 @@ export default function ProjectModal({ project, onClose }) {
       <motion.div
         className="
           relative w-full max-w-[1100px] max-h-[92vh]
-          bg-white/90 dark:bg-[#1b1b1bd9]
-          backdrop-blur-xl rounded-2xl shadow-2xl
-          overflow-hidden flex flex-col
-        "
+          sm:p-4
+    rounded 
+                     overflow-hidden flex flex-col
+            border border-[var(--btn-border)]
+  bg-[var(--btn-bg)]
+  backdrop-blur-md
+  text-[var(--text-primary)]
+  shadow-sm hover:shadow-md
+  transition-all"
         initial={{ y: 50, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         exit={{ y: 50, opacity: 0 }}
-        transition={{ type: 'spring', stiffness: 180, damping: 22 }}
+        transition={{ type: "spring", stiffness: 180, damping: 22 }}
       >
-        
         {/* CLOSE BTN */}
         <button
           className="absolute right-4 top-4 z-20 p-2 bg-white/80 dark:bg-[#2a2a2a99] rounded-md hover:bg-white dark:hover:bg-[#2a2a2a]"
@@ -43,7 +48,6 @@ export default function ProjectModal({ project, onClose }) {
 
         {/* CONTENT GRID */}
         <div className="flex flex-col md:flex-row w-full h-full">
-          
           {/* LEFT — MEDIA */}
           <div className="w-full md:w-[40%] px-4 py-4 flex items-start justify-center">
             <div className="w-full">
@@ -53,7 +57,6 @@ export default function ProjectModal({ project, onClose }) {
 
           {/* RIGHT — DETAILS */}
           <div className="w-full md:w-[60%] p-5 overflow-y-auto max-h-[80vh]">
-
             <h3 className="text-xl md:text-2xl font-semibold">
               {project.title}
             </h3>
@@ -72,13 +75,20 @@ export default function ProjectModal({ project, onClose }) {
                 <span
                   key={i}
                   className="
-                    text-xs px-3 py-1 rounded-full
-                    border bg-neutral-100 dark:bg-white/5 
-                    border-neutral-200 dark:border-white/10
-                    flex items-center gap-2 shadow-sm
-                  "
+                    text-xs px-3 py-2 rounded
+                     dark:bg-white/5 
+                    200 dark:border-white/10
+                    flex items-center gap-2 
+
+                      border border-[var(--btn-border)]
+  bg-[var(--btn-bg)]
+  backdrop-blur-md
+  text-[var(--text-primary)]
+  shadow-sm hover:shadow-md
+  transition-all"
+                  
                 >
-                  <s.icon className="text-sm" style={{ color: s.color }} />
+                  <s.icon className="text-xl" style={{ color: s.color }} />
                   {s.label}
                 </span>
               ))}
@@ -92,12 +102,14 @@ export default function ProjectModal({ project, onClose }) {
                   target="_blank"
                   rel="noreferrer"
                   className="
-                    px-4 py-2 bg-black dark:bg-white 
-                    text-white dark:text-black 
-                    rounded-md font-medium shadow-sm
-                  "
+       px-2 py-2 rounded-full
+        border border-neutral-300 dark:border-white/20
+        hover:bg-neutral-100 dark:hover:bg-white/10
+        font-medium 
+        flex items-center gap-2
+      "
                 >
-                  View Live
+                  <FaLink size={26} />
                 </a>
               )}
 
@@ -107,21 +119,20 @@ export default function ProjectModal({ project, onClose }) {
                   target="_blank"
                   rel="noreferrer"
                   className="
-                    px-4 py-2 border rounded-md
-                    border-neutral-300 dark:border-white/20
-                    hover:bg-neutral-100 dark:hover:bg-white/10
-                    font-medium
-                  "
+        px-2 py-2 rounded-full
+        border border-neutral-300 dark:border-white/20
+        hover:bg-neutral-100 dark:hover:bg-white/10
+        font-medium 
+        flex items-center gap-2
+      "
                 >
-                  View Code
+                  <FaGithub size={26} />
                 </a>
               )}
             </div>
           </div>
-
         </div>
       </motion.div>
-
     </div>
   );
 }
