@@ -181,18 +181,11 @@ export default function MyStrength() {
               <img
                 src="https://github-readme-streak-stats.herokuapp.com/?user=ManishMandrai&theme=transparent&hide_border=true"
                 alt="GitHub Streak"
-                className="shadow-lg shadow-black/20 dark:shadow-white/5 rounded-lg"
+                className=" rounded-lg"
               />
             </div>
 
-            {/* subtle ambient radial behind (theme-adaptive) */}
-            <div
-              className="absolute inset-0 -z-10 blur-3xl opacity-[0.06]"
-              style={{
-                background:
-                  "radial-gradient(circle, currentColor, transparent)",
-              }}
-            />
+
             <div className="mt-12 flex flex-col items-center gap-3">
               {/* aesthetic one-liner */}
               <div className="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400">

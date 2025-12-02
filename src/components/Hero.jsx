@@ -88,7 +88,7 @@ export default function Hero() {
       <div
         className="
         flex flex-col items-center justify-center 
-        px-11 py-4
+        px-10 py-4
         border-1 rounded
         text-center
           border-[var(--btn-border)]
@@ -115,7 +115,7 @@ export default function Hero() {
         className="
         flex flex-col items-center justify-center rounded py-4
         border-1
-        px-10
+        px-9
         text-center    border-[var(--btn-border)]
   bg-[var(--btn-bg)]
   backdrop-blur-md
@@ -156,7 +156,7 @@ export default function Hero() {
 
                 <span
                   ref={headingRef}
-                  className="text-[92px] sm:text-9xl md:text-10xl font-semibold leading-none ml-[-10px] overflow-hidden"
+                  className="text-[90px] sm:text-9xl md:text-10xl font-semibold leading-none ml-[-10px] overflow-hidden"
                   style={{ fontFamily: "Poppins, sans-serif" }}
                 >
                   {name.map((c, i) => (
