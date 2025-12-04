@@ -133,5 +133,16 @@ html.light .theme-logo { filter: invert(1) brightness(1.0); }
   animation: fade-in 0.25s ease-out;
 }
 
+
+@keyframes grow {
+  from { height: 0%; opacity: 0.5; }
+  to   { height: var(--h); opacity: 1; }
+}
+
+.animate-grow {
+  animation: grow 1s ease-out forwards;
+}
+
+
 /* END OF index.css */
 

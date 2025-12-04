@@ -11,10 +11,10 @@ const Navbar = () => {
   const { theme, setTheme } = useTheme();
 
   return (
-    <nav className="w-full z-50 border-b py-2 fixed md:bg-transparent">
+    <nav className="w-full sticky top-0 z-50 border-b py-2 md:bg-transparent">
+      
       <div className="max-w-7xl mx-auto px-3 sm:px-15">
         <div className="flex justify-between items-center h-10">
-
           {/* Logo */}
           <NavLink to="/" className="flex items-center">
             <img
@@ -26,8 +26,10 @@ const Navbar = () => {
 
           {/* Desktop Nav */}
           <div className="hidden md:flex items-center gap-6">
-            <NavLink to="/about" className="hover:opacity-70 transition">About</NavLink>
-            <NavLink to="/testimonials" className="hover:opacity-70 transition">Testimonials</NavLink>
+            <NavLink to="/about" className="hover:opacity-70 transition">
+              About
+            </NavLink>
+            {/* <NavLink to="/testimonials" className="hover:opacity-70 transition">Testimonials</NavLink> */}
 
             <NavLink
               to="/hireme"
@@ -85,7 +87,6 @@ const Navbar = () => {
           </div>
         </div>
       </div>
-
       {/* Mobile Menu */}
       {isOpen && (
         <div className="fixed inset-0 z-40 md:hidden">
@@ -109,9 +110,9 @@ const Navbar = () => {
                 About
               </NavLink>
 
-              <NavLink to="/testimonials" onClick={() => setIsOpen(false)}>
+              {/* <NavLink to="/testimonials" onClick={() => setIsOpen(false)}>
                 Testimonials
-              </NavLink>
+              </NavLink> */}
 
               <NavLink
                 to="/hireme"

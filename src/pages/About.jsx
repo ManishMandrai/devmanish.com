@@ -1,204 +1,115 @@
-import React, { useState } from "react";
-import {
-  FaInstagram,
-  FaTwitter,
-  FaLinkedin,
-  FaMobile,
-  FaPlug,
-  FaCode,
-  FaShieldAlt,
-  FaDatabase,
-  FaServer,
-} from "react-icons/fa";
-import { FiChevronDown } from "react-icons/fi";
-import {
-  SiJavascript,
-  SiCplusplus,
-  SiHtml5,
-  SiCss3,
-  SiReact,
-  SiBootstrap,
-  SiNodedotjs,
-  SiExpress,
-  SiMongodb,
-  SiFirebase,
-  SiGit,
-  SiGithub,
-  SiPostman,
-  SiNetlify,
-  SiVercel,
-} from "react-icons/si";
+import React from "react";
+import { FaTwitter, FaLinkedin } from "react-icons/fa";
 import Photo from "../assets/manish.png";
-
-const skillsCategories = [
-  {
-    title: "Programming Languages",
-    skills: [
-      { name: "JavaScript", icon: SiJavascript },
-      { name: "C++", icon: SiCplusplus },
-      { name: "HTML5", icon: SiHtml5 },
-      { name: "CSS3", icon: SiCss3 },
-    ],
-  },
-  {
-    title: "Frontend Development",
-    skills: [
-      { name: "React.js", icon: SiReact },
-      { name: "Bootstrap", icon: SiBootstrap },
-      { name: "Responsiveness", icon: FaMobile },
-      { name: "RESTful API ", icon: FaPlug },
-    ],
-  },
-  {
-    title: "Backend Development & APIs",
-    skills: [
-      { name: "Node.js", icon: SiNodedotjs },
-      { name: "Express.js", icon: SiExpress },
-      { name: "RESTful API ", icon: FaCode },
-      { name: "Authentication ", icon: FaShieldAlt },
-    ],
-  },
-  {
-    title: "Databases & State Management",
-    skills: [
-      { name: "MongoDB", icon: SiMongodb },
-      { name: "Firebase", icon: SiFirebase },
-      { name: "Mongoose", icon: FaDatabase },
-    ],
-  },
-  {
-    title: "Version Control & Collaboration",
-    skills: [
-      { name: "Git", icon: SiGit },
-      { name: "GitHub", icon: SiGithub },
-    ],
-  },
-  {
-    title: "Testing, Debugging & Deployment",
-    skills: [
-      { name: "Postman", icon: SiPostman },
-      { name: "Chrome Tools", icon: FaCode },
-      { name: "Netlify", icon: SiNetlify },
-      { name: "Vercel", icon: SiVercel },
-      { name: "Hostinger", icon: FaServer },
-    ],
-  },
-];
+import BarGraph from "../components/BarGraph";
+import SkillsAssemble from "../components/SkillsAssemble";
+import { Car } from "lucide-react";
+import CardSection from "../components/CardSection";
 
 const About = () => {
-  const [openSections, setOpenSections] = useState({});
-
-  const toggleSection = (index) => {
-    setOpenSections((prev) => ({
-      ...prev,
-      [index]: !prev[index], // Toggle the state of the clicked section
-    }));
-  };
-
   return (
-    <div className="min-h-screen flex items-center justify-center px-4 py-10">
-      <div className="w-full max-w-7xl py-8 rounded-lg shadow-lg flex flex-col md:flex-row gap-8">
-        {/* Left Column - About Section */}
-        <div className="flex-1">
-          <div className="flex justify-center mb-6">
+    <div className="min-h-screen flex items-center justify-center  py-10">
+      <div className="w-full max-w-6xl py-8 rounded-lg flex flex-col gap-12">
+        {/* ---------- TOP SECTION (PHOTO + INTRO) ---------- */}
+        <div className="flex flex-col md:flex-row items-center md:items-center gap-10">
+          {/* LEFT - PHOTO */}
+          <div className="md:w-2/5 flex  items-center justify-center">
             <img
-              className="h-48 w-48 sm:h-56 sm:w-56 rounded-full border-2 border-teal-500 shadow-md"
+              className="h-56 w-56 md:h-64 md:w-64 rounded-full border-2 border-teal-500 shadow-md object-cover"
               src={Photo}
               alt="Manish Kumar"
             />
           </div>
 
-          <div>
-            <h1 className="text-4xl font-bold mb-4">Manish Kumar</h1>
-            <h4 className="text-lg  mb-6">
-              Full-Stack Developer | C++ Programmer
+          {/* RIGHT - INTRO TEXT */}
+          <div className="md:w-3/5">
+            <h1 className="text-4xl font-bold mb-2">Manish Kumar</h1>
+            <h4 className="text-lg text-teal-600 mb-4">
+              Software Engineer • Full-Stack Developer
             </h4>
-            <p className="leading-relaxed mb-4">
-              Hi, I'm Manish Kumar, a passionate and detail-oriented Full-Stack
-              Web Developer and C++ Programmer. As a final-year college student,
-              I have hands-on experience in building dynamic and scalable web
-              applications using the MERN stack. My strong problem-solving
-              skills and deep understanding of algorithms enable me to write
-              efficient and optimized code.
-            </p>
-            <p className=" leading-relaxed mb-4">
-              With a keen eye for detail and a strong grasp of both front-end
-              and back-end technologies, I enjoy crafting seamless user
-              experiences and robust server-side architectures. I stay up to
-              date with emerging technologies and continuously refine my skills
-              to develop high-quality, scalable solutions.
-            </p>
-            <p className=" leading-relaxed mb-6">
-              I'm eager to collaborate with innovative teams, solve complex
-              challenges, and contribute to impactful projects. Let's connect
-              and create something amazing together! 🚀
-            </p>
-          </div>
 
-          <div className="flex justify-center space-x-6 text-2xl mt-6">
-  
-            <a
-              href="https://twitter.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-teal-500 hover:text-teal-300 transition-transform transform hover:scale-110"
-            >
-              <FaTwitter />
-            </a>
-            <a
-              href="https://linkedin.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-teal-500 hover:text-teal-300 transition-transform transform hover:scale-110"
-            >
-              <FaLinkedin />
-            </a>
+            <p className="leading-relaxed mb-3">
+              I'm a software engineer who enjoys crafting clean, dependable, and
+              user-centered web experiences. I work comfortably across the MERN
+              stack, turning ideas into smooth, well-structured products that
+              look polished and perform consistently from frontend to backend.
+            </p>
+
+            <p className="leading-relaxed">
+              I thrive in full-stack development, blending intuitive UI/UX with
+              thoughtful architecture and efficient logic. Every project is a
+              chance to learn, refine, and improve—whether it's adopting new
+              tools, optimizing workflows, or solving real user problems. Driven
+              by curiosity and a desire to grow, I love building meaningful
+              products and taking on challenges that push my skills forward.
+            </p>
+
+            {/* Socials */}
+            <div className="flex space-x-6 text-2xl mt-6">
+              <a
+                href="https://twitter.com"
+                target="_blank"
+                className="text-teal-500 hover:text-teal-300 hover:scale-110 transition"
+              >
+                <FaTwitter />
+              </a>
+
+              <a
+                href="https://linkedin.com"
+                target="_blank"
+                className="text-teal-500 hover:text-teal-300 hover:scale-110 transition"
+              >
+                <FaLinkedin />
+              </a>
+            </div>
           </div>
         </div>
 
-        {/* Right Column - Skills Section */}
-        <div className="flex-1">
-          <h2 className="text-3xl font-bold mb-6 text-center md:text-left">
-            Technical Skills
-          </h2>
-          <div className="space-y-6">
-            {skillsCategories.map((category, index) => (
-              <div key={index} className="mb-6">
-                <div
-                  className="flex items-center justify-between cursor-pointer p-3  rounded-lg transition-all"
-                  onClick={() => toggleSection(index)}
-                >
-                  <h4 className="text-lg font-semibold">{category.title}</h4>
-                  <FiChevronDown
-                    className={`transition-transform ${
-                      openSections[index] ? "rotate-180" : ""
-                    }`}
-                  />
-                </div>
-
-                {openSections[index] && (
-                  <div className="mt-4 grid grid-cols-2 sm:grid-cols-3 gap-3 border p-4 rounded-xl">
-                    {category.skills.map((skill, skillIndex) => (
-                      <div
-                        key={skillIndex}
-                        className="flex items-center justify-center border rounded-lg p-3 space-x-2  hover:scale-105 transition-all cursor-pointer"
-                      >
-                        {skill.icon ? (
-                          <skill.icon className="text-xl" />
-                        ) : (
-                          <FaCode className="text-xl" />
-                        )}
-                        <span className="text-sm font-medium ">
-                          {skill.name}
-                        </span>
-                      </div>
-                    ))}
-                  </div>
-                )}
-              </div>
-            ))}
+        <div className="space-y-6 text-gray-700 mt-8">
+          <div>
+            <span className="font-semibold text-xl">
+              • What technologies I work with?
+            </span>
+            <p>
+              I primarily work with the MERN stack for full-stack development,
+              along with tools like Tailwind, Prisma, and various REST APIs. I
+              also use Puppeteer and Node.js for automation workflows. Depending
+              on the project, I adapt quickly to new libraries and tools to
+              deliver the best results.
+            </p>
           </div>
+
+          <div>
+            <span className="font-semibold text-xl">
+              • How do I approach building a project?
+            </span>
+            <p>
+              I start by understanding the problem clearly, breaking it into
+              structured tasks, and planning a scalable architecture. I focus on
+              clean UI design, smooth UX, and efficient backend logic.
+              Throughout development, I iterate, test, and refine until the
+              solution feels solid, reliable, and user-friendly.
+            </p>
+          </div>
+
+          <div>
+            <span className="font-semibold text-xl">
+              • What type of work excites me the most?
+            </span>
+            <p>
+              I enjoy projects that challenge my logic and creativity—whether
+              it's full-stack apps, automation tools, or performance
+              improvements. Anything that involves solving real-world problems,
+              optimizing systems, or building seamless user experiences
+              motivates me to push my skills further.
+            </p>
+          </div>
+          
         </div>
+        <BarGraph/>
+        <SkillsAssemble/>
+        <CardSection/>
+        
       </div>
     </div>
   );
