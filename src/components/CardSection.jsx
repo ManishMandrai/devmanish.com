@@ -7,7 +7,7 @@ import Kohli from "../assets/virat.png";
 import { FaSpotify } from "react-icons/fa";
 
 const cardStyle =
-  "p-4 md:p-6 relative overflow-hidden rounded-xl border backdrop-blur-md shadow-sm hover:shadow-md transition-all bg-[var(--btn-bg)] border-[var(--btn-border)] text-[var(--text-primary)] h-[340px] md:h-[340px]";
+  "p-6 md:p-6 relative overflow-hidden rounded-xl border backdrop-blur-md shadow-sm hover:shadow-md transition-all bg-[var(--btn-bg)] border-[var(--btn-border)] text-[var(--text-primary)] h-[340px] md:h-[340px]";
 
 const CardSection = () => {
   return (
