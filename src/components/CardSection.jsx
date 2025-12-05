@@ -8,11 +8,12 @@ import { FaSpotify } from "react-icons/fa";
 
 
 const cardStyle =
-  "p-4 md:p-6 relative overflow-hidden  rounded-xl border backdrop-blur-md shadow-sm hover:shadow-md transition-all bg-[var(--btn-bg)] border-[var(--btn-border)] text-[var(--text-primary)]";
+  "p-6 md:p-6 relative overflow-hidden rounded-xl border backdrop-blur-md shadow-sm hover:shadow-md transition-all bg-[var(--btn-bg)] border-[var(--btn-border)] text-[var(--text-primary)] h-[340px] md:h-[340px]";
+
 
 const CardSection = () => {
   return (
-    <div className="w-full py-16  flex justify-center px-4">
+    <div className="w-full py-16  flex justify-center p-4">
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl w-full">
 
         {/* 1️⃣ CODING GEAR */}
@@ -45,8 +46,9 @@ const CardSection = () => {
 
           <img
             src={Kohli}
-            className="absolute bottom-[-10px] right-5  w-[128%] opacity-95 pointer-events-none"
+            className="absolute bottom-0 right-0 w-[120%] opacity-95 pointer-events-none"
           />
+
         </div>
 
         {/* 3️⃣ LAST PLAYED */}
@@ -65,21 +67,22 @@ const CardSection = () => {
             </span>
           </p>
 
-          <div className="absolute bottom-10 right-36   translate-y-10 translate-x-10">
-            <img src={vinyl} className="w-33" />
+          <div className="absolute bottom-6 right-24 opacity-40">
+            <img src={vinyl} className="w-32" />
           </div>
 
           <a
             href="https://open.spotify.com/track/1CmUZGtH29Kx36C1Hleqlz?si=48ea501873de4ee8"
             target="_blank"
             rel="noopener noreferrer"
-            className="absolute bottom-[-100px] right-27"
+            className="absolute bottom-[-50px] right-28"
           >
             <img
               src={songCover}
-              className="w-[120px] rounded-xl shadow-xl pointer-events-auto hover:scale-105 transition"
+              className="w-[100px] rounded-xl shadow-xl pointer-events-auto hover:scale-105 transition"
             />
           </a>
+
 
         </div>
 

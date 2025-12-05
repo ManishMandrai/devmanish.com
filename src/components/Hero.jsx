@@ -137,7 +137,7 @@ export default function Hero() {
   );
 
   return (
-    <section className="min-h-screen  flex items-center">
+    <section className="min-h-screen  mt-20 sm:mt-2 flex items-center">
       <style>{`
         .char {
           display: inline-block;
@@ -156,7 +156,7 @@ export default function Hero() {
 
                 <span
                   ref={headingRef}
-                  className="text-[84px] sm:text-9xl md:text-10xl font-semibold leading-none sm:ml-[-10px] overflow-hidden"
+                  className="text-[84px] sm:text-9xl md:text-10xl font-semibold leading-none ml-[-5px] sm:ml-[-10px] overflow-hidden"
                   style={{ fontFamily: "Poppins, sans-serif" }}
                 >
                   {name.map((c, i) => (

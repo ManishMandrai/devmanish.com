@@ -8,7 +8,7 @@ import CardSection from "../components/CardSection";
 
 const About = () => {
   return (
-    <div className="min-h-screen flex items-center justify-center  py-10">
+    <div className="min-h-screen flex items-center justify-center p-4 py-10">
       <div className="w-full max-w-6xl py-8 rounded-lg flex flex-col gap-12">
         {/* ---------- TOP SECTION (PHOTO + INTRO) ---------- */}
         <div className="flex flex-col md:flex-row items-center md:items-center gap-10">
@@ -22,7 +22,7 @@ const About = () => {
           </div>
 
           {/* RIGHT - INTRO TEXT */}
-          <div className="md:w-3/5">
+          <div className="md:w-3/5 px-2">
             <h1 className="text-4xl font-bold mb-2">Manish Kumar</h1>
             <h4 className="text-lg text-teal-600 mb-4">
               Software Engineer • Full-Stack Developer
@@ -65,11 +65,11 @@ const About = () => {
           </div>
         </div>
 
-        <div className="space-y-6 text-gray-700 mt-8">
+        <div className="space-y-6 px-2 text-gray-700 mt-8">
           <div>
-            <span className="font-semibold text-xl">
-              • What technologies I work with?
-            </span>
+            <h3 className="font-semibold text-xl">
+                What technologies I work with?
+            </h3>
             <p>
               I primarily work with the MERN stack for full-stack development,
               along with tools like Tailwind, Prisma, and various REST APIs. I
@@ -80,9 +80,9 @@ const About = () => {
           </div>
 
           <div>
-            <span className="font-semibold text-xl">
-              • How do I approach building a project?
-            </span>
+            <h3 className="font-semibold text-xl">
+               How do I approach building a project?
+            </h3>
             <p>
               I start by understanding the problem clearly, breaking it into
               structured tasks, and planning a scalable architecture. I focus on
@@ -93,9 +93,9 @@ const About = () => {
           </div>
 
           <div>
-            <span className="font-semibold text-xl">
-              • What type of work excites me the most?
-            </span>
+            <h3 className="font-semibold text-xl">
+              What type of work excites me the most?
+            </h3>
             <p>
               I enjoy projects that challenge my logic and creativity—whether
               it's full-stack apps, automation tools, or performance
