@@ -54,7 +54,7 @@ const CardSection = () => {
         <div className={cardStyle}>
           <div className="flex items-center gap-2 mb-3">
             <FaSpotify className="text-4xl text-green-500" />
-            <span className="font-semibold text-2xl ">That Debug My Life</span>
+            <span className="font-semibold text-2xl ">Playlist</span>
           </div>
 
           <p className="text-sm leading-relaxed ">
