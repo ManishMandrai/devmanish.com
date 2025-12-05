@@ -106,7 +106,7 @@ const About = () => {
           </div>
           
         </div>
-        <BarGraph/>
+        {/* <BarGraph/> */}
         <SkillsAssemble/>
         <CardSection/>
         

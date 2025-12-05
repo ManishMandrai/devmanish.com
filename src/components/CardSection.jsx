@@ -4,18 +4,20 @@ import React from "react";
 import vinyl from "../assets/vinyl.png";
 import songCover from "../assets/album.jpg";
 import Kohli from "../assets/virat.png";
+import { FaSpotify } from "react-icons/fa";
+
 
 const cardStyle =
-  "p-6 md:p-8 relative overflow-hidden aspect-square rounded-xl border backdrop-blur-md shadow-sm hover:shadow-md transition-all bg-[var(--btn-bg)] border-[var(--btn-border)] text-[var(--text-primary)]";
+  "p-4 md:p-6 relative overflow-hidden  rounded-xl border backdrop-blur-md shadow-sm hover:shadow-md transition-all bg-[var(--btn-bg)] border-[var(--btn-border)] text-[var(--text-primary)]";
 
 const CardSection = () => {
   return (
-    <div className="w-full py-16 flex justify-center px-4">
+    <div className="w-full py-16  flex justify-center px-4">
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl w-full">
 
         {/* 1️⃣ CODING GEAR */}
         <div className={cardStyle}>
-          <h2 className="text-xl font-semibold mb-4 opacity-90">💻 Coding Gear</h2>
+          <h3 className="text-xl font-semibold mb-4 opacity-90">💻 Coding Gear</h3>
 
           <p className="text-sm opacity-80">
             Xiaomi Notebook Pro 120G — my daily workhorse.
@@ -33,28 +35,28 @@ const CardSection = () => {
 
         {/* 2️⃣ INSPIRATION */}
         <div className={cardStyle}>
-          <h2 className="text-xl font-semibold opacity-90">🔥 Inspiration</h2>
+          <h3 className="text-xl font-semibold opacity-90">🔥 Inspiration</h3>
 
-          <p className="text-sm opacity-80 mt-3 leading-relaxed">
+          <p className="text-sm opacity-80 mt-3 text-end leading-relaxed">
             “Self-belief and hard work will always earn you success.”
             <br /><br />
-            Virat’s discipline and mindset influence how I improve as a developer.
+            {/* Virat’s discipline and mindset influence how I improve as a developer. */}
           </p>
 
           <img
             src={Kohli}
-            className="absolute bottom-0  w-[98%] opacity-95 pointer-events-none"
+            className="absolute bottom-[-10px] right-5  w-[128%] opacity-95 pointer-events-none"
           />
         </div>
 
         {/* 3️⃣ LAST PLAYED */}
         <div className={cardStyle}>
           <div className="flex items-center gap-2 mb-3">
-            <img src="/spotify.svg" className="w-5 h-5 opacity-90" />
-            <h2 className="font-semibold opacity-90">Last Played</h2>
+            <FaSpotify className=" text-3xl text-green-500" />
+            <h3 className="font-semibold opacity-90">Last Played</h3>
           </div>
 
-          <p className="text-sm opacity-80 max-w-[70%] leading-relaxed">
+          <p className="text-sm opacity-80  leading-relaxed">
             Last Played <span className="font-semibold opacity-100">Thrift Shop</span>
             <br />
             Song by{" "}
@@ -63,23 +65,29 @@ const CardSection = () => {
             </span>
           </p>
 
-          <div className="absolute bottom-0 right-0 translate-y-10 translate-x-10 opacity-20">
-            <img src={vinyl} className="w-40" />
+          <div className="absolute bottom-10 right-36   translate-y-10 translate-x-10">
+            <img src={vinyl} className="w-33" />
           </div>
 
-          <img
-            src={songCover}
-            className="absolute bottom-4 right-4 w-[120px] rounded-xl shadow-xl pointer-events-none"
-          />
+          <a
+            href="https://open.spotify.com/track/1CmUZGtH29Kx36C1Hleqlz?si=48ea501873de4ee8"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="absolute bottom-[-100px] right-27"
+          >
+            <img
+              src={songCover}
+              className="w-[120px] rounded-xl shadow-xl pointer-events-auto hover:scale-105 transition"
+            />
+          </a>
+
         </div>
 
         {/* 4️⃣ BOOKS */}
         <div className={cardStyle}>
-          <h2 className="text-xl font-semibold mb-3 opacity-90">📚 Books That Grew Me</h2>
+          <h3 className="text-xl font-semibold mb-3 opacity-90">📚 Books </h3>
 
-          <p className="text-sm opacity-80 leading-relaxed mb-4">
-            A few books that shaped how I think:
-          </p>
+
 
           <ul className="text-sm opacity-80 space-y-2">
             <li><span className="text-green-500">•</span> Atomic Habits – James Clear</li>
