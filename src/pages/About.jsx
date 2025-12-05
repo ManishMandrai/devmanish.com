@@ -5,10 +5,12 @@ import BarGraph from "../components/BarGraph";
 import SkillsAssemble from "../components/SkillsAssemble";
 import { Car } from "lucide-react";
 import CardSection from "../components/CardSection";
+import Contact from "../components/Contact";
+
 
 const About = () => {
   return (
-    <div className="min-h-screen flex items-center justify-center p-4 py-10">
+    <div className="min-h-screen flex items-center justify-center p-4 py-20">
       <div className="w-full max-w-6xl py-8 rounded-lg flex flex-col gap-12">
         {/* ---------- TOP SECTION (PHOTO + INTRO) ---------- */}
         <div className="flex flex-col md:flex-row items-center md:items-center gap-10">
@@ -109,6 +111,9 @@ const About = () => {
         {/* <BarGraph/> */}
         <SkillsAssemble/>
         <CardSection/>
+ <div>
+           <Contact/>
+ </div>
         
       </div>
     </div>

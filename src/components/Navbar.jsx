@@ -2,10 +2,11 @@ import React, { useState } from "react";
 import { NavLink, useNavigate, useLocation } from "react-router-dom";
 import { MenuIcon, XIcon, SunIcon, MoonIcon } from "@heroicons/react/outline";
 
-import useTheme from "../hooks/useTheme";
+import useTheme from "../hooks/useThemeHook";
 import LogoDark from "../assets/logow.png";
 import LogoLight from "../assets/logob.png";
 import Socialicons from "./Socialicons";
+import ThemeLogo from "./ThemeLogo";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -40,20 +41,12 @@ const Navbar = () => {
   hover:after:drop-shadow-[0_0_8px_rgba(255,0,255,0.9)]
 `;
 
-
   return (
     <nav className="w-full fixed top-0 left-0 z-50 border-b py-2 ">
-
       <div className="max-w-7xl mx-auto px-3 sm:px-15">
         <div className="flex justify-between items-center h-10">
           {/* Logo */}
-          <NavLink to="/" className="flex items-center">
-            <img
-              src={theme === "dark" ? LogoDark : LogoLight}
-              alt="MANISH"
-              className="w-40 transition-all"
-            />
-          </NavLink>
+        <NavLink to="/" className="flex items-center"> <img src={theme === "dark" ? LogoDark : LogoLight} alt="MANISH" className="w-40 transition-all" /> </NavLink>
 
           {/* Desktop Nav */}
           <div className="hidden md:flex items-center gap-6">

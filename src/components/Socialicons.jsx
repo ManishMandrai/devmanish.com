@@ -6,9 +6,9 @@ import { FaXTwitter } from "react-icons/fa6";
 
 const socialLinks = [
   { href: "https://leetcode.com/u/manishmandrai/", icon: SiLeetcode, color: "#FFA116", label: "LeetCode" },
-  { href: "https://x.com/ManishKumar3114?t=FqKTO6rQ9LfDA2gsHWiwaQ&s=09", icon: FaXTwitter, color: "#000000", label: "X / Twitter" },
   { href: "https://www.linkedin.com/in/manish-kumar-mandrai/", icon: CiLinkedin, color: "#0077B5", label: "LinkedIn" },
   { href: "https://github.com/ManishMandrai", icon: FaGithub, color: "#181717", label: "GitHub" },
+  { href: "https://x.com/ManishKumar3114?t=FqKTO6rQ9LfDA2gsHWiwaQ&s=09", icon: FaXTwitter, color: "#000000", label: "X / Twitter" },
 ];
 
 const Socialicons = () => (
@@ -20,9 +20,9 @@ const Socialicons = () => (
         target="_blank"
         rel="noopener noreferrer"
         aria-label={label}
-        className="cursor-pointer"
+        className="cursor-pointer hover:scale-120"
         // set the hover color as a CSS variable; React accepts kebab-case vars via style
-        style={{ "--hover-color": color }}
+        // style={{ "--hover-color": color }} 
       >
         {/* svg color is controlled by CSS (color: var(--icon-color)) */}
         <Icon className="h-7 w-7" />

@@ -10,7 +10,7 @@ import tailwindcss from '@tailwindcss/vite'
 
 
 export default defineConfig({
-  plugins: [react(), tailwindcss()],
+  plugins: [react(), tailwindcss() ],
   assetsInclude: ["**/*.glb"],
   build: {
     outDir: 'dist'

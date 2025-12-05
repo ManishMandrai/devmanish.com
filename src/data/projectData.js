@@ -96,7 +96,7 @@ const projectData = [
   // --------------------------------------------------
   {
     id: "portfolio",
-    title: "Manish.dev – Portfolio Website",
+    title: "Portfolio ",
     category: "Projects",
     description:
       "A modern portfolio with theme switching, animations, responsive UI and a clean project showcase.",
@@ -152,7 +152,7 @@ const projectData = [
       { type: "image", url: "/assets/tbff1.png" },
       { type: "image", url: "/assets/tbff2.png" }
     ],
-    liveLink: "https://bhopalfilmfestival.com",
+    liveLink: "https://thebhopalfilmfestival.com",
   },
 
   // --------------------------------------------------
@@ -173,7 +173,7 @@ const projectData = [
       { type: "image", url: "/assets/url1.png" },
       { type: "image", url: "/assets/url2.png" }
     ],
-    liveLink: "https://tiny-link-xi-sandy.vercel.app/",
+    liveLink: "https://hello-hii-986h.vercel.app/",
     github: "https://github.com/ManishMandrai/tiny-link",
   },
 
@@ -204,7 +204,7 @@ const projectData = [
   // --------------------------------------------------
   {
     id: "matural",
-    title: "Matural.shop (E-commerce)",
+    title: "Matural.shop",
     category: "Experiments",
     description:
       "An early version of my ecommerce platform with product management, checkout flow and order system.",
@@ -217,7 +217,8 @@ const projectData = [
       { type: "image", url: "/assets/matural1.png" },
       { type: "image", url: "/assets/matural2.png" }
     ],
-    github: "https://github.com/ManishMandrai",
+    // github: "https://github.com/ManishMandrai",
+    liveLink: "https://matural.shop",
   },
 
   // --------------------------------------------------
@@ -269,8 +270,8 @@ const projectData = [
   // --------------------------------------------------
   {
     id: "gemini-bot",
-    title: "Gemini AI Bot",
-    category: "Experiments",
+    title: "AI Chat-Bot",
+    category: "Projects",
     description:
       "An AI chatbot using Gemini API with real-time messaging and a smooth, minimal UI.",
     skills: [

@@ -4,7 +4,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import projectData from "../data/projectData";
 import ProjectModal from "./ProjectModal";
 
-const TABS = ["All", "Projects", "Freelance", "Experiments", "Open Source"];
+const TABS = ["All", "Projects", "Freelance", "Experiments",];
+// const TABS = ["All", "Projects", "Freelance", "Experiments", "Open Source"];
 
 export default function ProjectsSection() {
   const [active, setActive] = useState("All");
@@ -54,7 +55,7 @@ export default function ProjectsSection() {
               exit={{ opacity: 0 }}
               transition={{ duration: 0.35 }}
             >
-              <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-8">
+              <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
                 {filtered.map((p) => (
                   <motion.div
                     layout
