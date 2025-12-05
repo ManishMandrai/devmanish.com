@@ -7,11 +7,11 @@ import Kohli from "../assets/virat.png";
 import { FaSpotify } from "react-icons/fa";
 
 const cardStyle =
-  "p-3 md:p-6 relative overflow-hidden rounded-xl border backdrop-blur-md shadow-sm hover:shadow-md transition-all bg-[var(--btn-bg)] border-[var(--btn-border)] text-[var(--text-primary)] h-[340px] md:h-[340px]";
+  "p-6 md:p-6 relative overflow-hidden rounded-xl border backdrop-blur-md shadow-sm hover:shadow-md transition-all bg-[var(--btn-bg)] border-[var(--btn-border)] text-[var(--text-primary)] h-[340px] md:h-[340px]";
 
 const CardSection = () => {
   return (
-    <div className="w-full py-16  flex justify-center p-3">
+    <div className="w-full py-16  flex justify-center p-4">
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-6xl w-full">
         {/* 1️⃣ CODING GEAR */}
         <div className={cardStyle}>
@@ -54,7 +54,7 @@ const CardSection = () => {
         <div className={cardStyle}>
           <div className="flex items-center gap-2 mb-3">
             <FaSpotify className="text-4xl text-green-500" />
-            <span className="font-semibold text-2xl ">Playlist</span>
+            <span className="font-semibold text-2xl ">The Playlist</span>
           </div>
 
           <p className="text-sm leading-relaxed ">
