@@ -177,6 +177,7 @@ export default function MyStrength() {
               <DuplicateRow items={skillsRow2} innerRef={r2} />
               <DuplicateRow items={skillsRow3} innerRef={r3} />
             </div>
+
             <div className="mt-12 flex justify-center">
               <img
                 src="https://github-readme-streak-stats.herokuapp.com/?user=ManishMandrai&theme=transparent&hide_border=true"
@@ -184,7 +185,6 @@ export default function MyStrength() {
                 className=" rounded-lg"
               />
             </div>
-
 
             <div className="mt-12 flex flex-col items-center gap-3">
               {/* aesthetic one-liner */}
@@ -311,7 +311,7 @@ export default function MyStrength() {
                   <div>
                     <FaHandshake className="text-5xl sm:hidden" />
 
-                    <p className="font-semibold">Open for Collabs </p>
+                    <span className=" font-bold">Open for Collabs </span>
                     <p className="text-sm opacity-80">
                       Open to collaborating on meaningful, high-impact products.
                     </p>
@@ -346,9 +346,9 @@ export default function MyStrength() {
                       <FaGithub className="text-4xl mt-1 sm:mt-0 sm:hidden cursor-pointer" />
                     </a>
 
-                    <p className="font-semibold mt-3 sm:mt-0 ">
+                    <span className="font-bold mt-3 sm:mt-0 ">
                       Work in Progress{" "}
-                    </p>
+                    </span>
                     <p className="text-sm opacity-80">
                       Currently crafting a tool click to explore what I’m
                       working on.

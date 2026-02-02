@@ -42,7 +42,11 @@ const Navbar = () => {
 `;
 
   return (
-    <nav className="w-full fixed top-0 left-0 z-50 border-b py-2 ">
+<nav
+  className="w-full fixed top-0 left-0 z-50 border-b py-2 backdrop-blur-md"
+  style={{ backgroundColor: "var(--surface)" }}
+>
+
       <div className="max-w-7xl mx-auto px-3 sm:px-15">
         <div className="flex justify-between items-center h-10">
           {/* Logo */}

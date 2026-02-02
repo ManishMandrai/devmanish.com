@@ -106,7 +106,7 @@ export default function Hero() {
 
         {/* Text */}
         <div className="mt-1 leading-tight">
-          <p className="text-sm opacity-80">3+ Dones</p>
+          <p className="text-sm opacity-80">3+ Projects</p>
         </div>
       </div>
 

@@ -1,5 +1,5 @@
 // src/components/ExperienceSS1.jsx
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { IoChevronDown } from "react-icons/io5";
 import experienceData from "../data/ExperienceData";
@@ -8,8 +8,16 @@ export default function ExperienceSS1() {
   const [openId, setOpenId] = useState(null);
   const [mobileOpenId, setMobileOpenId] = useState(null);
 
+  // Set first item as default open on initial render
+  useEffect(() => {
+    if (experienceData.length > 0) {
+      setOpenId(experienceData[0].id);
+      setMobileOpenId(experienceData[0].id);
+    }
+  }, []);
+
   return (
-    <section className="w-full my-20 ">
+    <section className="w-full my-20">
       <div className="max-w-4xl mx-auto px-4">
         <h2 className="text-3xl md:text-4xl font-bold mb-12">
           Work Experience
@@ -28,8 +36,6 @@ export default function ExperienceSS1() {
                 return (
                   <div
                     key={item.id}
-                    onMouseEnter={() => setOpenId(item.id)}
-                    onMouseLeave={() => setOpenId(null)}
                     className="relative"
                   >
                     {/* Row grid: 3 cols (left timeline, content, dates) */}
@@ -38,11 +44,13 @@ export default function ExperienceSS1() {
                       <div className="relative h-24 flex items-center justify-center">
                         {/* Dot */}
                         <div className="w-3.5 h-3.5 rounded-full bg-neutral-600 z-10" />
-                        {/* short connector line to the content */}
                       </div>
 
-                      {/* CONTENT */}
-                      <div className="py-3">
+                      {/* CONTENT - Clickable area for toggling */}
+                      <div 
+                        className="py-3 cursor-pointer"
+                        onClick={() => setOpenId(isOpen ? null : item.id)}
+                      >
                         <div className="flex items-center gap-4">
                           {/* optional logo (if present) */}
                           {item.logo && (
@@ -58,6 +66,7 @@ export default function ExperienceSS1() {
                               target="_blank"
                               rel="noreferrer"
                               className="text-lg font-semibold hover:underline"
+                              onClick={(e) => e.stopPropagation()}
                             >
                               {item.company}
                             </a>
@@ -72,50 +81,50 @@ export default function ExperienceSS1() {
                       </div>
                     </div>
 
-                    {/* Hover-expanded description (appears below the row) */}
-                    <AnimatePresence initial={false}>
-                      {isOpen && (
-                        <motion.div
-                          initial={{ opacity: 0, height: 0 }}
-                          animate={{ opacity: 1, height: "auto" }}
-                          exit={{ opacity: 0, height: 0 }}
-                          transition={{ duration: 0.32, ease: "easeOut" }}
-                          className="mt-2"
+                    {/* Expanded description - Always present but animated */}
+                    <motion.div
+                      initial={false}
+                      animate={{ 
+                        opacity: isOpen ? 1 : 0,
+                        height: isOpen ? "auto" : 0
+                      }}
+                      transition={{ 
+                        duration: 0.32, 
+                        ease: "easeOut" 
+                      }}
+                      className="overflow-hidden"
+                    >
+                      {/* This container aligns under content+dates columns */}
+                      <div className="grid grid-cols-[6rem_minmax(0,1fr)_0rem] gap-10">
+                        <div /> {/* empty to keep dot column spacing */}
+                        <div
+                          className="rounded p-3 border border-[var(--btn-border)]
+                            bg-[var(--btn-bg)]
+                            backdrop-blur-md
+                            text-[var(--text-primary)]
+                            shadow-sm"
                         >
-                          {/* This container aligns under content+dates columns */}
-                          <div className="grid grid-cols-[6rem_minmax(0,1fr)_2rem] gap-10">
-                            <div /> {/* empty to keep dot column spacing */}
-                            <div
-                              className="rounded  p-3 border border-[var(--btn-border)]
-                                bg-[var(--btn-bg)]
-                                backdrop-blur-md
-                                text-[var(--text-primary)]
-                                shadow-sm hover:shadow-md
-                                transition-"
-                            >
-                              <p className="text-neutral-700 leading-relaxed">
-                                {item.description}
-                              </p>
-                              <div className="flex flex-wrap gap-3 mt-4 mb-2">
-                                {item.tags?.map((t, j) => (
-                                  <span
-                                    key={j}
-                                    className="text-sm px-5 py-2 rounded border border-neutral-200 flex items-center gap-2"
-                                  >
-                                    <t.icon
-                                      className="text-xl"
-                                      style={{ color: t.color }}
-                                    />
-                                    {t.label}
-                                  </span>
-                                ))}
-                              </div>
-                            </div>
-                            <div /> {/* keep date column aligned */}
+                          <p className="text-neutral-700 leading-relaxed">
+                            {item.description}
+                          </p>
+                          <div className="flex flex-wrap gap-3 mt-4 mb-2">
+                            {item.tags?.map((t, j) => (
+                              <span
+                                key={j}
+                                className="text-sm px-5 py-2 rounded border border-neutral-200 flex items-center gap-2"
+                              >
+                                <t.icon
+                                  className="text-xl"
+                                  style={{ color: t.color }}
+                                />
+                                {t.label}
+                              </span>
+                            ))}
                           </div>
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
+                        </div>
+                        <div /> {/* keep date column aligned */}
+                      </div>
+                    </motion.div>
                   </div>
                 );
               })}
@@ -130,14 +139,16 @@ export default function ExperienceSS1() {
             return (
               <div
                 key={item.id}
-                className=" border rounded-md  overflow-hidden border-[var(--btn-border)]
+                className="border rounded-md overflow-hidden border-[var(--btn-border)]
                     bg-[var(--btn-bg)]
                     backdrop-blur-md
                     text-[var(--text-primary)]
-                    shadow-sm hover:shadow-md
-                    transition-all"
+                    shadow-sm"
               >
-                <div className="p-4 flex items-start justify-between gap-4">
+                <div 
+                  className="p-4 flex items-start justify-between gap-4 cursor-pointer"
+                  onClick={() => setMobileOpenId(isOpen ? null : item.id)}
+                >
                   <div className="flex items-start gap-3">
                     {item.logo && (
                       <img
@@ -152,6 +163,7 @@ export default function ExperienceSS1() {
                         rel="noreferrer"
                         target="_blank"
                         className="font-semibold"
+                        onClick={(e) => e.stopPropagation()}
                       >
                         {item.company}
                       </a>
@@ -160,48 +172,44 @@ export default function ExperienceSS1() {
                     </div>
                   </div>
 
-                  <button
-                    aria-label="toggle"
-                    onClick={() => setMobileOpenId(isOpen ? null : item.id)}
-                    className="p-2"
-                  >
+                  <div className="p-2">
                     <IoChevronDown
                       className={`text-xl transition-transform ${
                         isOpen ? "rotate-180" : ""
                       }`}
                     />
-                  </button>
+                  </div>
                 </div>
 
-                <AnimatePresence initial={false}>
-                  {isOpen && (
-                    <motion.div
-                      initial={{ opacity: 0, height: 0 }}
-                      animate={{ opacity: 1, height: "auto" }}
-                      exit={{ opacity: 0, height: 0 }}
-                      transition={{ duration: 0.28 }}
-                      className="px-4 pb-4"
-                    >
-                      <p className="text-neutral-700 leading-relaxed">
-                        {item.description}
-                      </p>
-                      <div className="flex flex-wrap gap-2 mt-3">
-                        {item.tags?.map((t, j) => (
-                          <span
-                            key={j}
-                            className="text-xs px-5 py-2 rounded border border-neutral-200 flex items-center gap-2"
-                          >
-                            <t.icon
-                              className="text-sm"
-                              style={{ color: t.color }}
-                            />
-                            {t.label}
-                          </span>
-                        ))}
-                      </div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
+                <motion.div
+                  initial={false}
+                  animate={{ 
+                    opacity: isOpen ? 1 : 0,
+                    height: isOpen ? "auto" : 0
+                  }}
+                  transition={{ duration: 0.28 }}
+                  className="overflow-hidden"
+                >
+                  <div className="px-4 pb-4">
+                    <p className="text-neutral-700 leading-relaxed">
+                      {item.description}
+                    </p>
+                    <div className="flex flex-wrap gap-2 mt-3">
+                      {item.tags?.map((t, j) => (
+                        <span
+                          key={j}
+                          className="text-xs px-5 py-2 rounded border border-neutral-200 flex items-center gap-2"
+                        >
+                          <t.icon
+                            className="text-sm"
+                            style={{ color: t.color }}
+                          />
+                          {t.label}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </motion.div>
               </div>
             );
           })}
