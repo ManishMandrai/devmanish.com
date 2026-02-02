@@ -51,6 +51,7 @@ body {
   font-family: "Varela Round", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+   overflow-x: hidden; /* ✅ add this */
 }
 
 /* Keep p default readable */

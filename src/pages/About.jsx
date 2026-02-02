@@ -10,7 +10,7 @@ import Contact from "../components/Contact";
 
 const About = () => {
   return (
-    <div className="min-h-screen flex items-center justify-center p-4 py-20">
+    <div className="min-h-screen flex items-center justify-center p-4 py-20 overflow-hidden">
       <div className="w-full max-w-6xl py-8 rounded-lg flex flex-col gap-12">
         {/* ---------- TOP SECTION (PHOTO + INTRO) ---------- */}
         <div className="flex flex-col md:flex-row items-center md:items-center gap-10">
@@ -51,7 +51,7 @@ const About = () => {
               <a
                 href="https://twitter.com"
                 target="_blank"
-                className="text-teal-500 hover:text-teal-300 hover:scale-110 transition"
+                className="text-teal-500 hover:text-teal-300  transition"
               >
                 <FaTwitter />
               </a>
@@ -59,7 +59,7 @@ const About = () => {
               <a
                 href="https://linkedin.com"
                 target="_blank"
-                className="text-teal-500 hover:text-teal-300 hover:scale-110 transition"
+                className="text-teal-500 hover:text-teal-300  transition"
               >
                 <FaLinkedin />
               </a>
