@@ -130,7 +130,7 @@ export default function Hero() {
 
         <div className="mt-1 leading-tight">
           <p className="text-base font-semibold"></p>
-          <p className="text-sm opacity-80">1y Dev Grind</p>
+          <p className="text-sm opacity-80">1y Dev Exp.</p>
         </div>
       </div>
     </div>
