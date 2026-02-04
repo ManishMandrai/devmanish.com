@@ -33,7 +33,7 @@ const HireMe = () => {
   };
 
   return (
-    <div className=" max-w-screen-md min-h-screen mt-12 p-2 mx-auto">
+    <div className=" max-w-screen-md min-h-screen mt-28 p-2 mx-auto">
       <div className="text-center mb-8">
         <h2 className="font-bold sm:text-center text-left px-2">
           Let's Build Together
