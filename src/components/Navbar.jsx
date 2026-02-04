@@ -42,15 +42,21 @@ const Navbar = () => {
 `;
 
   return (
-<nav
-  className="w-full fixed top-0 left-0 z-50 border-b py-2 backdrop-blur-md"
-  style={{ backgroundColor: "var(--surface)" }}
->
-
+    <nav
+      className="w-full fixed top-0 left-0 z-50 border-b py-2 backdrop-blur-md"
+      style={{ backgroundColor: "var(--surface)" }}
+    >
       <div className="max-w-7xl mx-auto px-3 sm:px-15">
         <div className="flex justify-between items-center h-10">
           {/* Logo */}
-        <NavLink to="/" className="flex items-center"> <img src={theme === "dark" ? LogoDark : LogoLight} alt="MANISH" className="w-40 transition-all" /> </NavLink>
+          <NavLink to="/" className="flex items-center">
+            {" "}
+            <img
+              src={theme === "dark" ? LogoDark : LogoLight}
+              alt="MANISH"
+              className="w-40 transition-all"
+            />{" "}
+          </NavLink>
 
           {/* Desktop Nav */}
           <div className="hidden md:flex items-center gap-6">
@@ -136,20 +142,22 @@ const Navbar = () => {
 
       {/* Mobile Menu */}
       {isOpen && (
-        <div className="fixed top-0 inset-0  z-40 md:hidden">
+        <div className="fixed top-100 inset-0  z-40 md:hidden">
           <div
-            className="absolute inset-0 backdrop-blur bg-black/30"
+            className="absolute inset-0  bg-black"
             onClick={() => setIsOpen(false)}
           />
 
           <div
             className="
-              absolute left-1/2 top-1/2 
-              -translate-x-1/2 -translate-y-1/2
-              w-[70%] max-w-[320px]
-              rounded-2xl p-6 py-24 
-              shadow-2xl border border-white/10
-            "
+    absolute left-1/2 top-1/2 
+    -translate-x-1/2 -translate-y-1/2
+    w-[70%] max-w-[320px]
+    rounded-2xl p-6 py-12 
+    shadow-2xl border border-[var(--btn-border)]
+    backdrop-blur-md
+  "
+            style={{ backgroundColor: "var(--btn-bg)" }}
           >
             <div className="flex flex-col space-y-4 text-center text-lg">
               <NavLink to="/about" onClick={() => setIsOpen(false)}>
