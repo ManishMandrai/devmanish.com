@@ -5,7 +5,6 @@ import projectData from "../data/projectData";
 import ProjectModal from "./ProjectModal";
 
 const TABS = ["All", "Projects", "Freelance", "Experiments",];
-// const TABS = ["All", "Projects", "Freelance", "Experiments", "Open Source"];
 
 export default function ProjectsSection() {
   const [active, setActive] = useState("All");
