@@ -1,5 +1,6 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import { gsap } from "gsap";
+import { Link } from "react-router-dom";
 import {
   SiJavascript,
   SiReact,
@@ -7,19 +8,56 @@ import {
   SiExpress,
   SiMongodb,
   SiTypescript,
+  SiNextdotjs,
 } from "react-icons/si";
 import Socialicons from "./Socialicons";
 import TextChange from "./TextChange";
 import ThreeLaptop from "./ThreeLaptop";
-import { FiBriefcase, FiClock } from "react-icons/fi";
-import { DownloadIcon } from "@heroicons/react/outline";
+import { FiBriefcase, FiClock, FiChevronDown } from "react-icons/fi";
+import { DownloadIcon, ChatIcon } from "@heroicons/react/outline";
+import projectData from "../data/projectData";
+
+// Earliest professional start date (MyAppBroker freelance, Jan 2025).
+// Experience badge is computed from this so it never goes stale again.
+const CAREER_START = new Date("2025-01-15");
+
+function getYearsOfExperience() {
+  const now = new Date();
+  const months =
+    (now.getFullYear() - CAREER_START.getFullYear()) * 12 +
+    (now.getMonth() - CAREER_START.getMonth());
+  const years = Math.max(1, Math.floor(months / 12));
+  return years;
+}
+
+const RESUME_OPTIONS = [
+  { label: "General / Full Stack", file: "/Manish_Kumar_Full_Stack_Developer.pdf" },
+  { label: "GenAI Developer", file: "/Manish_Kumar_GenAI_Developer.pdf" },
+  { label: "Frontend Developer", file: "/Manish_Kumar_Frontend_Developer.pdf" },
+  { label: "MERN Stack Developer", file: "/Manish_Kumar_MERN_Stack_Developer.pdf" },
+];
+
+const SKILL_STRIP = [
+  { icon: SiJavascript, label: "JavaScript" },
+  { icon: SiTypescript, label: "TypeScript" },
+  { icon: SiReact, label: "React" },
+  { icon: SiNextdotjs, label: "Next.js" },
+  { icon: SiNodedotjs, label: "Node.js" },
+  { icon: SiExpress, label: "Express" },
+//   { icon: SiMongodb, label: "MongoDB" },
+];
 
 export default function Hero() {
   const headingRef = useRef(null);
   const leftRef = useRef(null);
   const rightRef = useRef(null);
+  const resumeMenuRef = useRef(null);
+
+  const [resumeOpen, setResumeOpen] = useState(false);
 
   const name = "MANISH".split("");
+  const yearsExp = getYearsOfExperience();
+  const projectCount = projectData.length;
 
   useEffect(() => {
     // Character entrance
@@ -73,6 +111,20 @@ export default function Hero() {
       delay: 1,
     });
 
+    // Skill strip fade-in
+    gsap.fromTo(
+      ".skillChip",
+      { opacity: 0, y: 8 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.5,
+        stagger: 0.06,
+        ease: "power2.out",
+        delay: 1.3,
+      }
+    );
+
     // Floating 3D object
     gsap.to(rightRef.current, {
       y: -12,
@@ -82,9 +134,21 @@ export default function Hero() {
       ease: "ease.inOut",
     });
   }, []);
+
+  // Close resume dropdown on outside click
+  useEffect(() => {
+    function handleClickOutside(e) {
+      if (resumeMenuRef.current && !resumeMenuRef.current.contains(e.target)) {
+        setResumeOpen(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
   const Badges = () => (
     <div className="flex flex-wrap gap-4 sm:gap-8 ">
-      {/* FREELANCE BADGE */}
+      {/* PROJECTS BADGE */}
       <div
         className="
         flex flex-col items-center justify-center 
@@ -106,7 +170,7 @@ export default function Hero() {
 
         {/* Text */}
         <div className="mt-1 leading-tight">
-          <p className="text-sm opacity-80">3+ Projects</p>
+          <p className="text-sm opacity-80">{projectCount}+ Projects</p>
         </div>
       </div>
 
@@ -129,8 +193,7 @@ export default function Hero() {
         </span>
 
         <div className="mt-1 leading-tight">
-          <p className="text-base font-semibold"></p>
-          <p className="text-sm opacity-80">1y Dev Exp.</p>
+          <p className="text-sm opacity-80">{yearsExp}+ Years Exp.</p>
         </div>
       </div>
     </div>
@@ -156,7 +219,7 @@ export default function Hero() {
 
                 <span
                   ref={headingRef}
-                  className="text-[84px] sm:text-9xl md:text-10xl font-semibold leading-none ml-[-5px] sm:ml-[-10px] overflow-hidden"
+                  className="text-[56px] sm:text-7xl md:text-8xl font-semibold leading-none ml-[-3px] sm:ml-[-5px] overflow-hidden"
                   style={{ fontFamily: "Poppins, sans-serif" }}
                 >
                   {name.map((c, i) => (
@@ -170,6 +233,17 @@ export default function Hero() {
                   I'm a <TextChange />
                 </div>
               </div>
+            </div>
+
+            {/* Availability status */}
+            <div className="flex items-center gap-2 -mt-2">
+              <span className="relative flex h-2.5 w-2.5">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-500 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-green-500"></span>
+              </span>
+              <p className="text-sm font-semibold opacity-80">
+                Open to work & freelance projects
+              </p>
             </div>
 
             {/* Description */}
@@ -188,12 +262,31 @@ export default function Hero() {
                 }}
               />
             </div>
-            <div className="pt-2">
-              <a
-                href="/Manish_Kumar_Resume.pdf"
-                download
-                className="
-                    px-6 py-3 text-xl font-bold max-w-[180px] rounded flex items-center gap-3
+
+            {/* Skill strip — quick-skim tech row, distinct from the detailed Tech Stack section below */}
+            <div className="flex flex-wrap items-center gap-x-5 gap-y-2 max-w-xl">
+              {SKILL_STRIP.map(({ icon: Icon, label }) => (
+                <span
+                  key={label}
+                  className="skillChip flex items-center gap-1.5 text-[var(--text-secondary)] opacity-0 hover:opacity-100 hover:text-[var(--text-primary)] transition-all"
+                  title={label}
+                >
+                  <Icon className="h-4 w-4" />
+                  <span className="text-xs font-medium">{label}</span>
+                </span>
+              ))}
+            </div>
+
+            {/* CTAs: Resume (with variant picker) + Let's Talk */}
+            <div className="pt-2 flex flex-wrap items-center gap-4">
+              <div className="relative" ref={resumeMenuRef}>
+                <button
+                  type="button"
+                  onClick={() => setResumeOpen((prev) => !prev)}
+                  aria-haspopup="true"
+                  aria-expanded={resumeOpen}
+                  className="
+                    px-6 py-3 text-xl font-bold rounded flex items-center gap-3
                     border transition-all
                     bg-[var(--btn-bg)]
                     border-[var(--btn-border)]
@@ -202,10 +295,61 @@ export default function Hero() {
                     hover:bg-[var(--surface)]
                     active:scale-95
                       "
+                >
+                  Resume
+                  <FiChevronDown
+                    className={`h-5 w-5 transition-transform ${
+                      resumeOpen ? "rotate-180" : ""
+                    }`}
+                  />
+                  <DownloadIcon className="h-8 w-8 text-[var(--accent)]" />
+                </button>
+
+                {resumeOpen && (
+                  <div
+                    className="
+                      absolute left-0 mt-2 w-64 rounded overflow-hidden z-20
+                      border border-[var(--btn-border)]
+                      bg-[var(--surface)]
+                      backdrop-blur-md
+                      shadow-md
+                    "
+                  >
+                    {RESUME_OPTIONS.map(({ label, file }) => (
+                      <a
+                        key={file}
+                        href={file}
+                        download
+                        onClick={() => setResumeOpen(false)}
+                        className="
+                          block px-4 py-3 text-sm font-semibold
+                          text-[var(--text-primary)]
+                          hover:bg-[var(--btn-bg)]
+                          transition-colors
+                        "
+                      >
+                        {label}
+                      </a>
+                    ))}
+                  </div>
+                )}
+              </div>
+
+              <Link
+                to="/hireme"
+                className="
+                    px-6 py-3 text-xl font-bold rounded flex items-center gap-3
+                    border transition-all
+                    bg-[var(--accent)]
+                    border-[var(--btn-border)]
+                    text-white
+                    shadow-sm hover:shadow-md
+                    active:scale-95
+                      "
               >
-                Resume
-                <DownloadIcon className="h-8 w-8 text-[var(--accent)]" />
-              </a>
+                Let's Talk
+                <ChatIcon className="h-7 w-7" />
+              </Link>
             </div>
 
             {/* Social Icons */}
