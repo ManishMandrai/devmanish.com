@@ -147,7 +147,7 @@ export default function Hero() {
     }, []);
 
     const Badges = () => (
-        <div className="flex flex-wrap gap-4 sm:gap-8 ">
+        <div className="flex flex-wrap gap-2 sm:gap-4 ">
             {/* PROJECTS BADGE */}
             <div
                 className="

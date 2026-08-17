@@ -73,7 +73,7 @@ const STRENGTH_TABS = [
         label: "AI & Automation",
         Icon: FaRobot,
         intro:
-            "Integrating Large Language Models and automation into real products, not just demos.",
+            "Integrating LLM's and automation into real products, not just demos.",
         bullets: [
             "Built a WhatsApp AI agent with Gemini — real conversation logic, not a wrapper",
             "LLM-powered agents & pipelines using Groq and Gemini AI",
@@ -407,7 +407,7 @@ export default function MyStrength() {
                                             type="button"
                                             onClick={() => setActiveTab(i)}
                                             className={`flex items-center gap-2 px-3 py-2 text-sm sm:text-base font-semibold whitespace-nowrap rounded-t transition-all border-b-[3px] ${isActive
-                                                    ? "border-indigo-500 text-[var(--text-primary)]"
+                                                    ? "border-indigo-700 text-[var(--text-primary)]"
                                                     : "border-transparent text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
                                                 }`}
                                         >
@@ -502,7 +502,7 @@ export default function MyStrength() {
                                 <div>
                                     <span className="font-bold block">Chat on WhatsApp</span>
                                     <p className="text-sm opacity-80">
-                                        Skip the email — message directly, I reply fast.
+                                        Skip the email — DM me, I'll reply fast.
                                     </p>
                                 </div>
                             </a>

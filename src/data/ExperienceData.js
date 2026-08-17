@@ -26,7 +26,7 @@ const experienceData = [
         company: "BoomXMedia",
         url: "https://boomxmedia.com",
         type: "Frontend Developer",
-        dates: "June 2025 - Present",
+        dates: "June 2025 - jan 2026",
         description:
             "Building high-performing, SEO-optimized UIs with React & Next.js. Improved Core Web Vitals and shipped email templates used in production campaigns.",
         tags: [
@@ -42,7 +42,7 @@ const experienceData = [
         id: 2,
         company: "Matural.shop",
         url: "https://matural.shop",
-        type: "Founder & Full-Stack Developer",
+        type: "Full-Stack Developer",
         dates: "Mar 2025 - May 2025",
         description:
             "Designed, developed and deployed a full MERN e-commerce system with payments, authentication, product management, order lifecycle, and cloud media.",
