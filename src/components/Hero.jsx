@@ -193,14 +193,14 @@ export default function Hero() {
                 </span>
 
                 <div className="mt-1 leading-tight">
-                    <p className="text-sm opacity-80">{yearsExp}+ YoE </p>
+                    <p className="text-sm opacity-80">{yearsExp}+ Years Exp.</p>
                 </div>
             </div>
         </div>
     );
 
     return (
-        <section className="min-h-screen  mt-20 sm:mt-2 flex items-center">
+        <section className="min-h-screen  mt-12 sm:mt-2 flex items-center">
             <style>{`
         .char {
           display: inline-block;
