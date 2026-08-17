@@ -193,7 +193,7 @@ export default function Hero() {
                 </span>
 
                 <div className="mt-1 leading-tight">
-                    <p className="text-sm opacity-80">{yearsExp}+ Years Exp.</p>
+                    <p className="text-sm opacity-80">{yearsExp}+ YoE </p>
                 </div>
             </div>
         </div>
@@ -278,7 +278,7 @@ export default function Hero() {
                         </div>
 
                         {/* CTAs: Resume (with variant picker) + Let's Talk */}
-                        <div className="pt-2 flex flex-wrap items-center gap-4">
+                        <div className="pt-2 flex flex-wrap items-center gap-3">
                             <div className="relative" ref={resumeMenuRef}>
                                 <button
                                     type="button"
@@ -286,7 +286,7 @@ export default function Hero() {
                                     aria-haspopup="true"
                                     aria-expanded={resumeOpen}
                                     className="
-                    px-6 py-3 text-xl font-bold rounded flex items-center gap-3
+                    px-4 py-3 text-xl font-bold rounded flex items-center gap-2
                     border transition-all
                     bg-[var(--btn-bg)]
                     border-[var(--btn-border)]
@@ -338,7 +338,7 @@ export default function Hero() {
                             <Link
                                 to="/hireme"
                                 className="
-                    px-6 py-3 text-xl font-bold rounded flex items-center gap-3
+                    px-4 py-3 text-xl font-bold rounded flex items-center gap-3
                     border transition-all
                     bg-[var(--accent)]
                     border-[var(--btn-border)]

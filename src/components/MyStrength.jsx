@@ -396,7 +396,8 @@ export default function MyStrength() {
                             </div>
 
                             {/* Tab bar — click to switch, same row style as a browser tab strip */}
-                            <div className="flex items-center gap-1 px-3 pt-2 border-b border-[var(--btn-border)] overflow-x-auto">
+                            <div 
+                            className="flex items-center gap-1 px-3 pt-2 border-b border-[var(--btn-border)] overflow-x-auto scrollbar-hide">
                                 {STRENGTH_TABS.map((tab, i) => {
                                     const Icon = tab.Icon;
                                     const isActive = i === activeTab;
@@ -405,9 +406,9 @@ export default function MyStrength() {
                                             key={tab.key}
                                             type="button"
                                             onClick={() => setActiveTab(i)}
-                                            className={`flex items-center gap-2 px-3 py-2 text-sm sm:text-base font-semibold whitespace-nowrap rounded-t transition-all border-b-2 ${isActive
-                                                ? "border-[var(--accent)] text-[var(--text-primary)]"
-                                                : "border-transparent text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
+                                            className={`flex items-center gap-2 px-3 py-2 text-sm sm:text-base font-semibold whitespace-nowrap rounded-t transition-all border-b-[3px] ${isActive
+                                                    ? "border-indigo-500 text-[var(--text-primary)]"
+                                                    : "border-transparent text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
                                                 }`}
                                         >
                                             <Icon className="w-4 h-4 sm:w-5 sm:h-5" />

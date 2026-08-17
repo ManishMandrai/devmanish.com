@@ -147,3 +147,10 @@ html.light .theme-logo { filter: invert(1) brightness(1.0); }
 
 /* END OF index.css */
 
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
