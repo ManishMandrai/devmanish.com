@@ -38,6 +38,8 @@ import {
 import { SiKotlin } from "react-icons/si";
 import { GitHubCalendar } from "react-github-calendar";
 
+
+
 // Tabbed "strengths" card content — one fixed-height card, three switchable panels
 const STRENGTH_TABS = [
     {
@@ -130,6 +132,24 @@ export default function MyStrength() {
         }
         touchStartX.current = null;
     };
+
+
+    // "Let's Connect" button — copies email instead of opening a mail client
+    const [emailCopied, setEmailCopied] = useState(false);
+    const CONTACT_EMAIL = "hello@manishai.xyz";
+
+    const handleCopyEmail = async () => {
+        try {
+            await navigator.clipboard.writeText(CONTACT_EMAIL);
+            setEmailCopied(true);
+            setTimeout(() => setEmailCopied(false), 2000);
+        } catch (err) {
+            // Clipboard API can fail (older browsers, insecure context) — fall back to mailto
+            window.location.href = `mailto:${CONTACT_EMAIL}`;
+        }
+    };
+
+
 
     // Fade the panel content in whenever the active tab changes
     useEffect(() => {
@@ -358,21 +378,27 @@ export default function MyStrength() {
                             <div className="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400">
                                 <span className="h-2 w-2 rounded-full bg-green-600"></span>
                                 <span className="tracking-tight">
-                                    Open for collaborations & cool ideas
+                                    Got an idea worth building? I'd love to hear it.
                                 </span>
                             </div>
 
-                            {/* premium button */}
-                            <a
-                                href="mailto:hello@manishai.xyz"
+                            {/* copy-email button, with inline confirmation */}
+                            <button
+                                type="button"
+                                onClick={handleCopyEmail}
                                 className="px-4 py-2 rounded border 
              text-sm 
              shadow-sm hover:shadow-[0_0_12px_rgba(99,102,241,0.4)]
-             transition-all duration-300"
+             transition-all duration-300
+             min-w-[150px]"
                             >
-                                Let's Connect →
-                            </a>
+                                {emailCopied ? "Email copied ✓" : "Let's Connect →"}
+                            </button>
                         </div>
+
+
+
+
                     </div>
 
                     {/* RIGHT: fixed-height tabbed strengths card + small cards below */}
@@ -396,8 +422,8 @@ export default function MyStrength() {
                             </div>
 
                             {/* Tab bar — click to switch, same row style as a browser tab strip */}
-                            <div 
-                            className="flex items-center gap-1 px-3 pt-2 border-b border-[var(--btn-border)] overflow-x-auto scrollbar-hide">
+                            <div
+                                className="flex items-center gap-1 px-3 pt-2 border-b border-[var(--btn-border)] overflow-x-auto scrollbar-hide">
                                 {STRENGTH_TABS.map((tab, i) => {
                                     const Icon = tab.Icon;
                                     const isActive = i === activeTab;
@@ -407,8 +433,8 @@ export default function MyStrength() {
                                             type="button"
                                             onClick={() => setActiveTab(i)}
                                             className={`flex items-center gap-2 px-3 py-2 text-sm sm:text-base font-semibold whitespace-nowrap rounded-t transition-all border-b-[3px] ${isActive
-                                                    ? "border-indigo-700 text-[var(--text-primary)]"
-                                                    : "border-transparent text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
+                                                ? "border-indigo-700 text-[var(--text-primary)]"
+                                                : "border-transparent text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
                                                 }`}
                                         >
                                             <Icon className="w-4 h-4 sm:w-5 sm:h-5" />
