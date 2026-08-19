@@ -26,7 +26,7 @@ const Contact = () => {
     <section className="max-w-3xl mx-auto px-4 py-16">
       {/* Heading */}
       <h2 className="text-3xl font-bold mb-3 text-left">
-        Let’s build something great together
+        Let’s build together 
       </h2>
       <p className="text-left text-[var(--text-primary)] opacity-70 mb-8 leading-relaxed max-w-lg">
         Whether you have a project idea, want to collaborate, or simply want to
