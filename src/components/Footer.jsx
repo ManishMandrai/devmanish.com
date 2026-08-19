@@ -21,14 +21,14 @@ const Footer = () => {
       <div className="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
         {/* Logo Section */}
         <div className="flex flex-col items-center lg:items-start space-y-4">
-          <NavLink to="/" className="flex items-center">
-
-            <img
-              src={theme === "dark" ? LogoDark : LogoLight}
-              alt="MANISH"
-              className="w-40 transition-all"
-            />
-          </NavLink>
+               <NavLink to="/" className="flex items-center">
+                 {" "}
+                 <img
+                   src={theme === "dark" ? LogoDark : LogoLight}
+                   alt="MANISH"
+                   className="w-40 transition-all"
+                 />{" "}
+               </NavLink>
 
           <div className="flex space-x-4">
             <Socialicons />
