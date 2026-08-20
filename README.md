@@ -6,7 +6,7 @@ Designed with a focus on UI, animations, and performance.
 ---
 
 ## 🔗 Live Portfolio  
-👉 https://devmanish.com
+👉 https://devmanishcom.vercel.app/
 
 ---
 
